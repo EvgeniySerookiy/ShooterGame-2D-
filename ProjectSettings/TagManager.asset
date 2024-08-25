@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ship
+  - asteroid
+  - Water
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Water
+    uniqueID: 4210417971
+    locked: 0
+  - name: Transparentcanopy
+    uniqueID: 3062091609
+    locked: 0
+  - name: Deepcrack
+    uniqueID: 1969765461
+    locked: 0
+  - name: Rock4
+    uniqueID: 963581861
+    locked: 0
+  - name: Rock1
+    uniqueID: 410390657
+    locked: 0
+  - name: Rock2
+    uniqueID: 2942846567
+    locked: 0
+  - name: Log
+    uniqueID: 1430385623
+    locked: 0
+  - name: Plant2
+    uniqueID: 3769702381
+    locked: 0
+  - name: Player
+    uniqueID: 2580534205
+    locked: 0
+  - name: Damn
+    uniqueID: 580015525
+    locked: 0
+  - name: Raging
+    uniqueID: 747373769
+    locked: 0
+  - name: Bullet
+    uniqueID: 3777073081
+    locked: 0
+  - name: Weapon
+    uniqueID: 1965359605
+    locked: 0
+  - name: Bridge
+    uniqueID: 1490897637
+    locked: 0
+  - name: Plant3
+    uniqueID: 4189110611
+    locked: 0
+  - name: Plant4
+    uniqueID: 2656327615
+    locked: 0
+  - name: Bush3
+    uniqueID: 4102152015
+    locked: 0
+  - name: Flyer
+    uniqueID: 956037033
+    locked: 0

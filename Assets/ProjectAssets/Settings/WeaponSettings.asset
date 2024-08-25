@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4712d754158740b3bdb8655677228668, type: 3}
+  m_Name: WeaponSettings
+  m_EditorClassIdentifier: 
+  <Weapons>k__BackingField:
+  - <Type>k__BackingField: 0
+    <ViewPrefab>k__BackingField: {fileID: 1000692121163745581, guid: 25218c8c21f344d51953bfadb6d75602, type: 3}
+    <Damage>k__BackingField: 50
+    <DamageRatio>k__BackingField: 1
+    <FireRate>k__BackingField: 1
+    <FireRateRatio>k__BackingField: 1
+    <BulletsPerShot>k__BackingField: 1
+    <BulletSetting>k__BackingField:
+      <BulletSpeed>k__BackingField: 15
+      "<\u0421anPenetrate>k__BackingField": 1
+      <BulletPrefab>k__BackingField: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
+  - <Type>k__BackingField: 1
+    <ViewPrefab>k__BackingField: {fileID: 8610464439728282195, guid: c7b055363ad8b42d2a4b3ec13613859c, type: 3}
+    <Damage>k__BackingField: 100
+    <DamageRatio>k__BackingField: 1
+    <FireRate>k__BackingField: 0.5
+    <FireRateRatio>k__BackingField: 2
+    <BulletsPerShot>k__BackingField: 1
+    <BulletSetting>k__BackingField:
+      <BulletSpeed>k__BackingField: 5
+      "<\u0421anPenetrate>k__BackingField": 0
+      <BulletPrefab>k__BackingField: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
+  - <Type>k__BackingField: 2
+    <ViewPrefab>k__BackingField: {fileID: 4666653821172474551, guid: 05a45f9ceceab4b2a9b269a4b2afdbed, type: 3}
+    <Damage>k__BackingField: 150
+    <DamageRatio>k__BackingField: 1
+    <FireRate>k__BackingField: 2
+    <FireRateRatio>k__BackingField: 2
+    <BulletsPerShot>k__BackingField: 3
+    <BulletSetting>k__BackingField:
+      <BulletSpeed>k__BackingField: 10
+      "<\u0421anPenetrate>k__BackingField": 0
+      <BulletPrefab>k__BackingField: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
