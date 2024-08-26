@@ -1,16 +1,24 @@
+using ProjectAssets.Scripts.Enemy.EnemyState;
+using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using MeleeAttackState = ProjectAssets.Scripts.Enemy.EnemyState.MeleeAttackState;
 
 namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyView : MonoBehaviour
     {
+        private ChaseState _chaseState;
+        private MeleeAttackState _meleeAttackState;
+        private StateMachine _stateMachine;
         private PlayerView _playerView;
-        private EnemyHealthController _enemyHealthController;
+        private HealthController _healthController;
+        //private float _damage;
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        
 
         [Inject]
         public void Construct(PlayerView playerView)
@@ -18,21 +26,26 @@ namespace ProjectAssets.Scripts.Enemy
             _playerView = playerView;
         }
         
-        public void Initialize(float health, EnemyHealthController enemyHealthController)
+        public void Initialize(float health, HealthController healthController)
         {
-            _enemyHealthController = enemyHealthController;
-            _enemyHealthController.SetHealth(health);
+            _healthController = healthController;
+            _healthController.SetHealth(health);
         }
 
         private void Start()
         {
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
+            _stateMachine = new StateMachine();
+            _chaseState = new ChaseState(_stateMachine, _agent, _playerView.transform);
+            _meleeAttackState = new MeleeAttackState(_stateMachine, _agent, _playerView.transform);
+            _stateMachine.AddStates(_chaseState, _meleeAttackState);
+            _stateMachine.Transit<ChaseState>();
         }
 
         private void Update()
         {
-            _agent.SetDestination(_playerView.transform.position);
+            _stateMachine.Update();
             FacePlayer();
         }
 
@@ -55,5 +68,19 @@ namespace ProjectAssets.Scripts.Enemy
                 _spriteRenderer.flipX = true;
             }
         }
+        
+        //private void OnTriggerEnter2D(Collider2D other)
+        //{
+        //    if (other.gameObject.TryGetComponent(out HealthController enemyHealthController))
+        //    {
+        //        enemyHealthController.TakeDamage(_damage);
+        //        
+        //        //if (!_bulletSetting.СanPenetrate)
+        //        //{
+        //        //    Hitted?.Invoke(this);
+        //        //    _rigidbody2D.velocity = Vector2.zero;
+        //        //}
+        //    }
+        //}
     }
 }

@@ -16,7 +16,11 @@ namespace ProjectAssets.Scripts.Enemy
 
         public void Start()
         {
-            StartCoroutine(SpawnEnemies());
+            EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
+                
+            // Создание врага
+            _enemyFactory.CreateEnemy(randomEnemyType);
+            //StartCoroutine(SpawnEnemies());
         }
 
         private IEnumerator SpawnEnemies()

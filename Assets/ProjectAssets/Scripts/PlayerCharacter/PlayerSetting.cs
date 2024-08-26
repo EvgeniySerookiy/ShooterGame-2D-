@@ -6,5 +6,6 @@ namespace ProjectAssets.Scripts.PlayerCharacter
     public class PlayerSetting : ScriptableObject
     {
         [field: SerializeField] public float Speed { get; private set; }
+        [field: SerializeField] public float Health { get; private set; }
     }
 }

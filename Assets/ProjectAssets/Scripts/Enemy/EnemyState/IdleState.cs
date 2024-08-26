@@ -1,9 +1,10 @@
+//using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 //using ProjectAssets.Scripts.PlayerStateMachine;
 //using UnityEngine;
 //
 //namespace ProjectAssets.Scripts.PlayerState
 //{
-//    public class IdleState : StatePlayer
+//    public class IdleState : StateEnemy
 //    {
 //        private readonly Rigidbody2D _rigidbody;
 //

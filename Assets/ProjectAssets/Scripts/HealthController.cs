@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace ProjectAssets.Scripts.Enemy
 {
-    public class EnemyHealthController : MonoBehaviour
+    public class HealthController : MonoBehaviour
     {
-        private float _health;
+        public float _health;
 
         public void SetHealth(float health)
         {

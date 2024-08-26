@@ -1,3 +1,4 @@
+using ProjectAssets.Scripts.Enemy;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts.PlayerCharacter
@@ -7,11 +8,13 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
+        [SerializeField] private HealthController _healthController;
         private float _speed;
         
         public void Awake()
         {
             _speed = _playerSetting.Speed;
+            _healthController.SetHealth(_playerSetting.Health);
         }
 
         public void Move(Vector2 direction)

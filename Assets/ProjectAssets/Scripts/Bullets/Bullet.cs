@@ -9,7 +9,7 @@ namespace ProjectAssets.Scripts.Bullets
     {
         public event Action<Bullet> Hitted;
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        private float _damage;
+        public float _damage;
         
         private BulletSetting _bulletSetting;
         public void Initialize(BulletSetting bulletSetting)
@@ -25,7 +25,7 @@ namespace ProjectAssets.Scripts.Bullets
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out EnemyHealthController enemyHealthController))
+            if (other.gameObject.TryGetComponent(out HealthController enemyHealthController))
             {
                 enemyHealthController.TakeDamage(_damage);
                 

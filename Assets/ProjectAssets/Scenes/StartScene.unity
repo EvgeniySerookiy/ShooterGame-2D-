@@ -20643,6 +20643,7 @@ GameObject:
   - component: {fileID: 1854028015}
   - component: {fileID: 1854028016}
   - component: {fileID: 1854028017}
+  - component: {fileID: 1854028018}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -20794,6 +20795,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 1854028013}
   _spriteRenderer: {fileID: 1854028012}
   _playerSetting: {fileID: 11400000, guid: 288e0e56ef9d64e76801e2124430b20e, type: 2}
+  _healthController: {fileID: 1854028018}
 --- !u!114 &1854028017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20807,6 +20809,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Root>k__BackingField: {fileID: 1854028011}
+--- !u!114 &1854028018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854028010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa84d42bdaf485795c1e3cf7a185464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
 --- !u!1 &1875100449
 GameObject:
   m_ObjectHideFlags: 0

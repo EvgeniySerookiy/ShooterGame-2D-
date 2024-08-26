@@ -16,7 +16,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyControllers
             
             var enemyView = container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, spawnEnemyPosition);
             
-            var enemyHealthController = enemyView.gameObject.AddComponent<EnemyHealthController>();
+            var enemyHealthController = enemyView.gameObject.AddComponent<HealthController>();
             enemyHealthController.SetHealth(_enemySetting.Health);
             
             enemyView.Initialize(_enemySetting.Health, enemyHealthController);

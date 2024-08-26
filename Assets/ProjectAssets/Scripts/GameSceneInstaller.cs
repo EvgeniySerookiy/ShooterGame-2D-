@@ -15,7 +15,6 @@ namespace ProjectAssets.Scripts
     {
         [SerializeField] private WeaponSettings _weaponSettings;
         [SerializeField] private EnemySettings _enemySettings;
-        
         [SerializeField] private CursorSetting _cursorSetting;
         [SerializeField] private Transform _spawnEnemyPosition;
 
