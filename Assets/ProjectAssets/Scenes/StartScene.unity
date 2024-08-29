@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 45613706}
   - component: {fileID: 45613705}
   - component: {fileID: 45613707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock-2x2 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35437,11 +35437,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854028010}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.1448205
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -36984,7 +36984,7 @@ GameObject:
   - component: {fileID: 2061607501}
   - component: {fileID: 2061607500}
   - component: {fileID: 2061607502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock4-1x1 (57)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

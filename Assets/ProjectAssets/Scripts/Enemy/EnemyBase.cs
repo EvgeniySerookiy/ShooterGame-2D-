@@ -3,25 +3,22 @@ using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 using ProjectAssets.Scripts.Enemy.Settings;
 using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
-using UnityEngine.AI;
 using Zenject;
 
 namespace ProjectAssets.Scripts.Enemy
 {
-    public class EnemyView : MonoBehaviour
+    public abstract class EnemyBase : MonoBehaviour
     {
-        private ChaseState _chaseState;
-        private DamnMeleeAttackState _damnMeleeAttackState;
-        private StateMachine _stateMachine;
-        private PlayerView _playerView;
-        private HealthController _healthController;
-        private EnemySetting _enemySetting;
-        private MonoBehaviour _monoBehaviour;
-        [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private SpriteRenderer _spriteRenderer;
-        [SerializeField] private Animator _animator;
-        [SerializeField] private Collider2D _collider;
+        protected StateMachine _stateMachine;
+        protected PlayerView _playerView;
+        protected HealthController _healthController;
+        protected EnemySetting _enemySetting;
+        protected MonoBehaviour _monoBehaviour;
+        protected GameObject _enemy;
         
+        [SerializeField] protected SpriteRenderer _spriteRenderer;
+        [SerializeField] protected Animator _animator;
+        [SerializeField] protected Collider2D _collider;
 
         [Inject]
         public void Construct(PlayerView playerView)
@@ -37,18 +34,17 @@ namespace ProjectAssets.Scripts.Enemy
             _monoBehaviour = monoBehaviour;
         }
 
-        private void Start()
+        public abstract void SetupStates();
+
+        protected virtual void Start()
         {
-            _agent.updateRotation = false;
-            _agent.updateUpAxis = false;
+            _enemy = gameObject;
             _stateMachine = new StateMachine();
-            _chaseState = new ChaseState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator);
-            _damnMeleeAttackState = new DamnMeleeAttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator, _collider, _monoBehaviour);
-            _stateMachine.AddStates(_chaseState, _damnMeleeAttackState);
+            SetupStates();
             _stateMachine.Transit<ChaseState>();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _stateMachine.Update();
             FacePlayer();
@@ -59,7 +55,7 @@ namespace ProjectAssets.Scripts.Enemy
             Destroy(gameObject);
         }
         
-        private void FacePlayer()
+        protected void FacePlayer()
         {
             Vector2 directionToPlayer = _playerView.transform.position - transform.position;
             
@@ -67,7 +63,6 @@ namespace ProjectAssets.Scripts.Enemy
             {
                 _spriteRenderer.flipX = false;
             }
-            
             else if (directionToPlayer.x < 0)
             {
                 _spriteRenderer.flipX = true;

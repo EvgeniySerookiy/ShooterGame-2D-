@@ -14,7 +14,7 @@ namespace ProjectAssets.Scripts.Enemy
             _enemyProvider = enemyProvider;
             _enemySetting = _enemyProvider.GetEnemy(enemyType);
             
-            var enemyView = container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, spawnEnemyPosition);
+            var enemyView = container.InstantiatePrefabForComponent<EnemyBase>(_enemySetting.BasePrefab, spawnEnemyPosition);
             
             var enemyHealthController = enemyView.gameObject.AddComponent<HealthController>();
             enemyHealthController.SetHealth(_enemySetting.Health);

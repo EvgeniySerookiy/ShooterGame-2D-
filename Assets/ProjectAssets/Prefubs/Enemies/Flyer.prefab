@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 1197432658438852061}
   - component: {fileID: 6970946069398642558}
   - component: {fileID: 6306077871880180385}
-  - component: {fileID: 6438431301911925202}
-  - component: {fileID: 635163221173197825}
   - component: {fileID: 8030594215869083860}
+  - component: {fileID: 8520629138878640568}
   m_Layer: 3
   m_Name: Flyer
   m_TagString: Untagged
@@ -146,50 +145,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 2.19}
   m_Size: {x: 4.36, y: 5.17}
   m_Direction: 0
---- !u!195 &6438431301911925202
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496071424088144110}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.43
-  m_Speed: 3.5
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 2
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 5.22
-  m_BaseOffset: 0.42
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &635163221173197825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496071424088144110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13e7d0ef4904674b4ada9421cede346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _agent: {fileID: 6438431301911925202}
-  _spriteRenderer: {fileID: 1197432658438852061}
-  _animator: {fileID: 8030594215869083860}
-  _collider: {fileID: 6306077871880180385}
 --- !u!95 &8030594215869083860
 Animator:
   serializedVersion: 5
@@ -211,6 +172,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8520629138878640568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496071424088144110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30597de70d37436c85f486873bf03186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1197432658438852061}
+  _animator: {fileID: 8030594215869083860}
+  _collider: {fileID: 6306077871880180385}
 --- !u!1 &6013641029990327234
 GameObject:
   m_ObjectHideFlags: 0

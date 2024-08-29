@@ -12,6 +12,8 @@ namespace ProjectAssets.Scripts.Bullets
         public float _damage;
         
         private BulletSetting _bulletSetting;
+        private bool _hasHit; // Флаг для отслеживания, был ли уже удар
+
         public void Initialize(BulletSetting bulletSetting)
         {
             _bulletSetting = bulletSetting;
@@ -28,7 +30,7 @@ namespace ProjectAssets.Scripts.Bullets
             if (other.gameObject.TryGetComponent(out HealthController enemyHealthController))
             {
                 enemyHealthController.TakeDamage(_damage);
-                
+
                 if (!_bulletSetting.СanPenetrate)
                 {
                     Hitted?.Invoke(this);

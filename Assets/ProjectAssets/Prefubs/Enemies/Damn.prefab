@@ -158,8 +158,8 @@ GameObject:
   - component: {fileID: 3675523703891066665}
   - component: {fileID: 8909093150243559237}
   - component: {fileID: 2893865990481390802}
-  - component: {fileID: -7426977286447118831}
   - component: {fileID: -86136059577164492}
+  - component: {fileID: 7688690478372477950}
   m_Layer: 6
   m_Name: Damn
   m_TagString: Untagged
@@ -319,22 +319,6 @@ NavMeshAgent:
   m_BaseOffset: 2.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-7426977286447118831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3757736418850754535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13e7d0ef4904674b4ada9421cede346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _agent: {fileID: 2893865990481390802}
-  _spriteRenderer: {fileID: 7617263312041166009}
-  _animator: {fileID: -86136059577164492}
-  _collider: {fileID: 8909093150243559237}
 --- !u!95 &-86136059577164492
 Animator:
   serializedVersion: 5
@@ -356,3 +340,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7688690478372477950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757736418850754535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40951e630fa5447aaa36f68050de7cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 7617263312041166009}
+  _animator: {fileID: -86136059577164492}
+  _collider: {fileID: 8909093150243559237}
+  _agent: {fileID: 2893865990481390802}
