@@ -1,4 +1,3 @@
-using ProjectAssets.Scripts.Enemy;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts.PlayerCharacter
@@ -9,6 +8,7 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
         [SerializeField] private HealthController _healthController;
+        [SerializeField] private Animator _animator;
         private float _speed;
         
         public void Awake()
@@ -21,10 +21,12 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         {
             if (direction != Vector2.zero)
             {
+                _animator.SetBool("Run",true);
                 _rigidbody.velocity = direction.normalized * _speed;
             }
             else
             {
+                _animator.SetBool("Run",false);
                 _rigidbody.velocity = Vector2.zero;
             }
             FlipXPlayer(direction.x);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ProjectAssets.Scripts.Enemy
+namespace ProjectAssets.Scripts
 {
     public class HealthController : MonoBehaviour
     {
@@ -16,6 +16,7 @@ namespace ProjectAssets.Scripts.Enemy
             _health -= damage;
             if (_health <= 0)
             {
+                _health = 0;
                 Die();
             }
         }

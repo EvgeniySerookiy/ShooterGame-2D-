@@ -1,23 +1,26 @@
 using ProjectAssets.Scripts.Enemy.EnemyState;
 using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
+using ProjectAssets.Scripts.Enemy.Settings;
 using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
-using MeleeAttackState = ProjectAssets.Scripts.Enemy.EnemyState.MeleeAttackState;
 
 namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyView : MonoBehaviour
     {
         private ChaseState _chaseState;
-        private MeleeAttackState _meleeAttackState;
+        private DamnMeleeAttackState _damnMeleeAttackState;
         private StateMachine _stateMachine;
         private PlayerView _playerView;
         private HealthController _healthController;
-        //private float _damage;
+        private EnemySetting _enemySetting;
+        private MonoBehaviour _monoBehaviour;
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private Collider2D _collider;
         
 
         [Inject]
@@ -26,10 +29,12 @@ namespace ProjectAssets.Scripts.Enemy
             _playerView = playerView;
         }
         
-        public void Initialize(float health, HealthController healthController)
+        public void Initialize(HealthController healthController, EnemySetting enemySetting, MonoBehaviour monoBehaviour)
         {
             _healthController = healthController;
-            _healthController.SetHealth(health);
+            _healthController.SetHealth(enemySetting.Health);
+            _enemySetting = enemySetting;
+            _monoBehaviour = monoBehaviour;
         }
 
         private void Start()
@@ -37,9 +42,9 @@ namespace ProjectAssets.Scripts.Enemy
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
             _stateMachine = new StateMachine();
-            _chaseState = new ChaseState(_stateMachine, _agent, _playerView.transform);
-            _meleeAttackState = new MeleeAttackState(_stateMachine, _agent, _playerView.transform);
-            _stateMachine.AddStates(_chaseState, _meleeAttackState);
+            _chaseState = new ChaseState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator);
+            _damnMeleeAttackState = new DamnMeleeAttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator, _collider, _monoBehaviour);
+            _stateMachine.AddStates(_chaseState, _damnMeleeAttackState);
             _stateMachine.Transit<ChaseState>();
         }
 
@@ -68,19 +73,5 @@ namespace ProjectAssets.Scripts.Enemy
                 _spriteRenderer.flipX = true;
             }
         }
-        
-        //private void OnTriggerEnter2D(Collider2D other)
-        //{
-        //    if (other.gameObject.TryGetComponent(out HealthController enemyHealthController))
-        //    {
-        //        enemyHealthController.TakeDamage(_damage);
-        //        
-        //        //if (!_bulletSetting.СanPenetrate)
-        //        //{
-        //        //    Hitted?.Invoke(this);
-        //        //    _rigidbody2D.velocity = Vector2.zero;
-        //        //}
-        //    }
-        //}
     }
 }

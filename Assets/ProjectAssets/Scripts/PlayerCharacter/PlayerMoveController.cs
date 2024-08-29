@@ -21,13 +21,13 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         public void Initialize()
         {
             _gameInput.OnMove += _playerView.Move;
-            _gameInput.OnShoot += _playerWeaponController.ActiveWeapon.Fire;
+            _gameInput.OnShoot += _playerWeaponController.Fire;
         }
 
         public void Dispose()
         {
             _gameInput.OnMove -= _playerView.Move;
-            _gameInput.OnShoot -= _playerWeaponController.ActiveWeapon.Fire;
+            _gameInput.OnShoot -= _playerWeaponController.Fire;
         }
     }
 }

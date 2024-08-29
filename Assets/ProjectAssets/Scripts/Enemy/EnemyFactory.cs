@@ -1,5 +1,3 @@
-using System;
-using ProjectAssets.Scripts.Enemy.EnemyControllers;
 using UnityEngine;
 using Zenject;
 
@@ -10,28 +8,20 @@ namespace ProjectAssets.Scripts.Enemy
         private readonly EnemyProvider _enemyProvider;
         private readonly DiContainer _container;
         private readonly Transform _spawnEnemyPosition;
+        private readonly MonoBehaviour _monoBehaviour;
 
-        public EnemyFactory(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition)
+        public EnemyFactory(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition, MonoBehaviour monoBehaviour)
         {
             Debug.Log("EnemyFactory");
             _enemyProvider = enemyProvider;
             _container = container;
             _spawnEnemyPosition = spawnEnemyPosition;
+            _monoBehaviour = monoBehaviour;
         }
         
         public EnemyController CreateEnemy(EnemyType enemyType)
         {
-            switch (enemyType)
-            { 
-                case EnemyType.Damn:
-                    return new DamnController(_enemyProvider, _container, _spawnEnemyPosition);
-                case EnemyType.Flyer:
-                    return new FlyerController(_enemyProvider, _container, _spawnEnemyPosition);
-                case EnemyType.Raging:
-                    return new RagingController(_enemyProvider, _container, _spawnEnemyPosition);
-                default:
-                    throw new ArgumentException("Unknown weapon type: " + enemyType);
-            }
+            return new EnemyController(_enemyProvider, _container, _spawnEnemyPosition, enemyType, _monoBehaviour);
         }
     }
 }

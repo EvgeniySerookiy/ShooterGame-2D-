@@ -1,6 +1,6 @@
 using System;
 using ProjectAssets.Scripts.Bullets.Settings;
-using ProjectAssets.Scripts.Enemy;
+using ProjectAssets.Scripts.Waters;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts.Bullets
@@ -36,7 +36,7 @@ namespace ProjectAssets.Scripts.Bullets
                 }
             }
             
-            if (other.gameObject.CompareTag("Water"))
+            if (other.gameObject.TryGetComponent(out Water water))
             {
                 Hitted?.Invoke(this);
                 _rigidbody2D.velocity = Vector2.zero;

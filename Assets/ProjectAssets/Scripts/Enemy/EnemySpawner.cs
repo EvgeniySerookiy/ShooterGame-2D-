@@ -16,20 +16,36 @@ namespace ProjectAssets.Scripts.Enemy
 
         public void Start()
         {
-            EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
+            //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
                 
             // Создание врага
-            _enemyFactory.CreateEnemy(randomEnemyType);
-            //StartCoroutine(SpawnEnemies());
+            //_enemyFactory.CreateEnemy(randomEnemyType);
+            StartCoroutine(Spawn());
+            StartCoroutine(SpawnEnemies());
         }
 
+        private IEnumerator Spawn()
+        {
+            while (true)
+            {
+                // Случайный тип врага
+                //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
+                EnemyType randomEnemyType = EnemyType.Flyer;
+                // Создание врага
+                _enemyFactory.CreateEnemy(randomEnemyType);
+                
+                // Ожидание 1 секунды перед следующим спавном
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        
         private IEnumerator SpawnEnemies()
         {
             while (true)
             {
                 // Случайный тип врага
-                EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
-                
+                //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
+                EnemyType randomEnemyType = EnemyType.Damn;
                 // Создание врага
                 _enemyFactory.CreateEnemy(randomEnemyType);
                 

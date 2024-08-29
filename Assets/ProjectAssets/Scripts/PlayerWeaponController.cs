@@ -10,7 +10,7 @@ namespace ProjectAssets.Scripts
     {
         private readonly WeaponFactory _weaponFactory;
         public List<WeaponController> Weapons { get; private set; }
-        public WeaponController ActiveWeapon { get; private set; }
+        private WeaponController _activeWeapon;
         
         public PlayerWeaponController(WeaponFactory weaponFactory)
         {
@@ -26,13 +26,18 @@ namespace ProjectAssets.Scripts
                 weapon.SetActive(false);
             }
 
-            ActiveWeapon = Weapons[GetRandomIndex()];
-            ActiveWeapon.SetActive(true);
+            _activeWeapon = Weapons[GetRandomIndex()];
+            _activeWeapon.SetActive(true);
         }
 
         private int GetRandomIndex()
         {
             return Random.Range(0, Weapons.Count);
+        }
+        
+        public void Fire()
+        {
+            _activeWeapon?.Fire();
         }
     }
 }

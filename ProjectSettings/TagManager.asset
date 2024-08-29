@@ -11,10 +11,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - AirEnemies
   - Water
   - UI
-  - 
+  - GroundEnemies
   - 
   - 
   - 
@@ -97,4 +97,7 @@ TagManager:
     locked: 0
   - name: Flyer
     uniqueID: 956037033
+    locked: 0
+  - name: Smoke
+    uniqueID: 4053420441
     locked: 0

@@ -17,17 +17,23 @@ MonoBehaviour:
     <ViewPrefab>k__BackingField: {fileID: -7426977286447118831, guid: 021e57174733c4d0b808cc248319e330, type: 3}
     <Health>k__BackingField: 200
     <Damage>k__BackingField: 10
-    <Speed>k__BackingField: 5
-    <AttackFrequency>k__BackingField: 1
+    <Speed>k__BackingField: 3
+    <AttackCooldown>k__BackingField: 1.5
+    <AttackSpeed>k__BackingField: 2
+    <AttackDistance>k__BackingField: 1.5
   - <Type>k__BackingField: 1
     <ViewPrefab>k__BackingField: {fileID: 635163221173197825, guid: 2394a9986c7244f838a97832ff066557, type: 3}
     <Health>k__BackingField: 150
     <Damage>k__BackingField: 10
-    <Speed>k__BackingField: 5
-    <AttackFrequency>k__BackingField: 1
+    <Speed>k__BackingField: 3
+    <AttackCooldown>k__BackingField: 2
+    <AttackSpeed>k__BackingField: 0.2
+    <AttackDistance>k__BackingField: 1.5
   - <Type>k__BackingField: 2
     <ViewPrefab>k__BackingField: {fileID: 4901050519352264541, guid: 5263340a0f71e46a3b5bfb92449d8988, type: 3}
     <Health>k__BackingField: 300
     <Damage>k__BackingField: 10
-    <Speed>k__BackingField: 5
-    <AttackFrequency>k__BackingField: 1
+    <Speed>k__BackingField: 3
+    <AttackCooldown>k__BackingField: 2
+    <AttackSpeed>k__BackingField: 0.2
+    <AttackDistance>k__BackingField: 5
