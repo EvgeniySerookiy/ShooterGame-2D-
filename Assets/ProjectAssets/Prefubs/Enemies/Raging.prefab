@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6425462943645947441}
   - component: {fileID: 2165792496876209443}
   - component: {fileID: 2572747292974135581}
-  - component: {fileID: 4581044162731043253}
+  - component: {fileID: 6250821154943064585}
   m_Layer: 6
   m_Name: Raging
   m_TagString: Untagged
@@ -195,7 +195,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4581044162731043253
+--- !u!114 &6250821154943064585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,13 +204,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3244048364676761858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40951e630fa5447aaa36f68050de7cb8, type: 3}
+  m_Script: {fileID: 11500000, guid: d13e7d0ef4904674b4ada9421cede346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 2165792496876209443}
   _spriteRenderer: {fileID: 5238169741385503085}
   _animator: {fileID: 2572747292974135581}
   _collider: {fileID: 6425462943645947441}
-  _agent: {fileID: 2165792496876209443}
 --- !u!1 &4187307735971088200
 GameObject:
   m_ObjectHideFlags: 0

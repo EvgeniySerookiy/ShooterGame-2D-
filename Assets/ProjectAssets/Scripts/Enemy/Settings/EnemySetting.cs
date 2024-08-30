@@ -7,7 +7,7 @@ namespace ProjectAssets.Scripts.Enemy.Settings
     public class EnemySetting
     {
         [field: SerializeField] public EnemyType Type{ get; private set; }
-        [field: SerializeField] public EnemyBase BasePrefab { get; private set; }
+        [field: SerializeField] public EnemyView ViewPrefab { get; private set; }
         [field: SerializeField] public float Health { get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }

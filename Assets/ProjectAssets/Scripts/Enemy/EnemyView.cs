@@ -3,19 +3,20 @@ using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 using ProjectAssets.Scripts.Enemy.Settings;
 using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 namespace ProjectAssets.Scripts.Enemy
 {
-    public abstract class EnemyBase : MonoBehaviour
+    public class EnemyView : MonoBehaviour
     {
-        protected StateMachine _stateMachine;
-        protected PlayerView _playerView;
-        protected HealthController _healthController;
-        protected EnemySetting _enemySetting;
-        protected MonoBehaviour _monoBehaviour;
-        protected GameObject _enemy;
+        private StateMachine _stateMachine;
+        private PlayerView _playerView;
+        private HealthController _healthController;
+        private EnemySetting _enemySetting;
+        private MonoBehaviour _monoBehaviour;
         
+        [SerializeField] private NavMeshAgent _agent;
         [SerializeField] protected SpriteRenderer _spriteRenderer;
         [SerializeField] protected Animator _animator;
         [SerializeField] protected Collider2D _collider;
@@ -32,19 +33,20 @@ namespace ProjectAssets.Scripts.Enemy
             _healthController.SetHealth(enemySetting.Health);
             _enemySetting = enemySetting;
             _monoBehaviour = monoBehaviour;
+            _agent.updateRotation = false;
+            _agent.updateUpAxis = false;
         }
 
-        public abstract void SetupStates();
-
-        protected virtual void Start()
+        private void Start()
         {
-            _enemy = gameObject;
             _stateMachine = new StateMachine();
-            SetupStates();
+            var chaseState = new ChaseState(_stateMachine, _playerView.transform, _enemySetting, _animator, _agent);
+            //var damnMeleeAttackState = new DamnMeleeAttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator, _collider, _monoBehaviour);
+            _stateMachine.AddStates(chaseState);
             _stateMachine.Transit<ChaseState>();
         }
 
-        protected virtual void Update()
+        private void Update()
         {
             _stateMachine.Update();
             FacePlayer();
@@ -55,7 +57,7 @@ namespace ProjectAssets.Scripts.Enemy
             Destroy(gameObject);
         }
         
-        protected void FacePlayer()
+        private void FacePlayer()
         {
             Vector2 directionToPlayer = _playerView.transform.position - transform.position;
             
