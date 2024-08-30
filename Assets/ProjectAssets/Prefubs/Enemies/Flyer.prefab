@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2755166394626080897}
   - component: {fileID: 8030594215869083860}
   - component: {fileID: 2959477976695424097}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Flyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496071424088144110}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.42
   m_Speed: 0
   m_Acceleration: 20
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2815963873500046731}
   - component: {fileID: 5974544528845718183}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
