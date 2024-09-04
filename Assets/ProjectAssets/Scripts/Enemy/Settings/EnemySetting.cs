@@ -1,4 +1,5 @@
 using System;
+using ProjectAssets.Scripts.Blood;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts.Enemy.Settings
@@ -8,6 +9,7 @@ namespace ProjectAssets.Scripts.Enemy.Settings
     {
         [field: SerializeField] public EnemyType Type{ get; private set; }
         [field: SerializeField] public EnemyView ViewPrefab { get; private set; }
+        [field: SerializeField] public BloodEffectParticle BloodEffectParticle { get; private set; }
         [field: SerializeField] public float Health { get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
         [field: SerializeField] public float Speed { get; private set; }

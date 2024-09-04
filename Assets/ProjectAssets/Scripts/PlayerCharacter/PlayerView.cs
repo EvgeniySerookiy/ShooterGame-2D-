@@ -7,14 +7,20 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
-        [SerializeField] private HealthController _healthController;
+        [SerializeField] public HealthController _healthController;
         [SerializeField] private Animator _animator;
+        
         private float _speed;
         
         public void Awake()
         {
             _speed = _playerSetting.Speed;
             _healthController.SetHealth(_playerSetting.Health);
+        }
+        
+        public void TakeDamage(float damage)
+        {
+            _healthController.TakeDamage(damage);
         }
 
         public void Move(Vector2 direction)

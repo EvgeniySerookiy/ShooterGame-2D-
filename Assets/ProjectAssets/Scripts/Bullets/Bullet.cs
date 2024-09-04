@@ -9,10 +9,9 @@ namespace ProjectAssets.Scripts.Bullets
     {
         public event Action<Bullet> Hitted;
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        public float _damage;
+        private float _damage;
         
         private BulletSetting _bulletSetting;
-        private bool _hasHit; // Флаг для отслеживания, был ли уже удар
 
         public void Initialize(BulletSetting bulletSetting)
         {

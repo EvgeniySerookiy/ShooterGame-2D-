@@ -68,6 +68,9 @@ TagManager:
   - name: Plant2
     uniqueID: 3769702381
     locked: 0
+  - name: Death
+    uniqueID: 2081012971
+    locked: 0
   - name: Player
     uniqueID: 2580534205
     locked: 0
@@ -76,6 +79,9 @@ TagManager:
     locked: 0
   - name: Raging
     uniqueID: 747373769
+    locked: 0
+  - name: Blood
+    uniqueID: 3343321635
     locked: 0
   - name: Bullet
     uniqueID: 3777073081
@@ -97,6 +103,9 @@ TagManager:
     locked: 0
   - name: Flyer
     uniqueID: 956037033
+    locked: 0
+  - name: BloodFly
+    uniqueID: 118283723
     locked: 0
   - name: Smoke
     uniqueID: 4053420441

@@ -18,6 +18,7 @@ namespace ProjectAssets.Scripts.Enemy
             
             var enemyHealthController = enemyView.gameObject.AddComponent<HealthController>();
             enemyHealthController.SetHealth(_enemySetting.Health);
+            enemyHealthController.SetHieEffectPrefab(_enemySetting.BloodEffectParticle);
             
             enemyView.Initialize(enemyHealthController, _enemySetting, monoBehaviour);
         }

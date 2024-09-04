@@ -1,29 +1,40 @@
+using ProjectAssets.Scripts.Blood;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts
 {
     public class HealthController : MonoBehaviour
     {
-        public float _health;
+        public float Health { get; private set; }
+        [SerializeField] private BloodEffectParticle _bloodEffectPrefab;
 
         public void SetHealth(float health)
         {
-            _health = health;
+            Health = health;
+        }
+        
+        public void SetHieEffectPrefab(BloodEffectParticle bloodEffectPrefab)
+        {
+            _bloodEffectPrefab = bloodEffectPrefab;
         }
         
         public void TakeDamage(float damage)
         {
-            _health -= damage;
-            if (_health <= 0)
+            var bloodEffectObject = Instantiate(_bloodEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(bloodEffectObject, 0.5f);
+            
+            Health -= damage;
+            
+            if (Health <= 0)
             {
-                _health = 0;
+                Health = 0;
                 Die();
             }
         }
 
         private void Die()
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
         }
     }
 }

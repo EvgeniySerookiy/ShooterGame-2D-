@@ -222,7 +222,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 580015525
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5e2ed61b54e3d714699df9eb64c8933e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -356,3 +356,4 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 7617263312041166009}
   _animator: {fileID: -86136059577164492}
   _collider: {fileID: 8909093150243559237}
+  _hieEffect: {fileID: 0}

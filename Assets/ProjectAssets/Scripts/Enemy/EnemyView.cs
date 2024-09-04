@@ -40,9 +40,10 @@ namespace ProjectAssets.Scripts.Enemy
         private void Start()
         {
             _stateMachine = new StateMachine();
-            var chaseState = new ChaseState(_stateMachine, _playerView.transform, _enemySetting, _animator, _agent);
-            //var damnMeleeAttackState = new DamnMeleeAttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator, _collider, _monoBehaviour);
-            _stateMachine.AddStates(chaseState);
+            var chaseState = new ChaseState(_stateMachine, _playerView.transform, _enemySetting, _animator, _agent, _healthController);
+            var damnMeleeAttackState = new AttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator, _collider, _monoBehaviour, _healthController);
+            var deathState = new DeathState(_stateMachine, _animator, _agent, _spriteRenderer);
+            _stateMachine.AddStates(chaseState, damnMeleeAttackState, deathState);
             _stateMachine.Transit<ChaseState>();
         }
 
@@ -50,11 +51,6 @@ namespace ProjectAssets.Scripts.Enemy
         {
             _stateMachine.Update();
             FacePlayer();
-        }
-
-        public void DestroyEnemy()
-        {
-            Destroy(gameObject);
         }
         
         private void FacePlayer()
@@ -68,6 +64,14 @@ namespace ProjectAssets.Scripts.Enemy
             else if (directionToPlayer.x < 0)
             {
                 _spriteRenderer.flipX = true;
+            }
+        }
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.TryGetComponent(out PlayerView playerView))
+            {
+                playerView.TakeDamage(_enemySetting.Damage);
             }
         }
     }
