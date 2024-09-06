@@ -1,3 +1,4 @@
+using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Cursor;
 using ProjectAssets.Scripts.Cursor.Settings;
 using ProjectAssets.Scripts.Enemy;
@@ -17,6 +18,7 @@ namespace ProjectAssets.Scripts
         [SerializeField] private EnemySettings _enemySettings;
         [SerializeField] private CursorSetting _cursorSetting;
         [SerializeField] private Transform _spawnEnemyPosition;
+        [SerializeField] private BulletEnemy _bulletEnemyPrefab;
 
         public override void InstallBindings()
         {
@@ -43,6 +45,8 @@ namespace ProjectAssets.Scripts
             Container.BindInterfacesAndSelfTo<CursorChanger>().AsSingle().WithArguments(_cursorSetting);
             
             Container.Bind<MonoBehaviour>().FromInstance(this).AsSingle();
+            
+            Container.Bind<BulletEnemy>().FromInstance(_bulletEnemyPrefab).AsSingle();
             
         }
     }

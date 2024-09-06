@@ -20,8 +20,9 @@ namespace ProjectAssets.Scripts.Enemy
                 
             // Создание врага
             //_enemyFactory.CreateEnemy(randomEnemyType);
-            StartCoroutine(Spawn());
-            StartCoroutine(SpawnEnemies());
+            //StartCoroutine(Spawn());
+            //StartCoroutine(SpawnEnemies());
+            StartCoroutine(SpawnFiring());
         }
 
         private IEnumerator Spawn()
@@ -51,6 +52,21 @@ namespace ProjectAssets.Scripts.Enemy
                 
                 // Ожидание 1 секунды перед следующим спавном
                 yield return new WaitForSeconds(1f);
+            }
+        }
+        
+        private IEnumerator SpawnFiring()
+        {
+            while (true)
+            {
+                // Случайный тип врага
+                //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
+                EnemyType randomEnemyType = EnemyType.Raging;
+                // Создание врага
+                _enemyFactory.CreateEnemy(randomEnemyType);
+                
+                // Ожидание 1 секунды перед следующим спавном
+                yield return new WaitForSeconds(100f);
             }
         }
     }

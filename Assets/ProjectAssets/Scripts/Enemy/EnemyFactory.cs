@@ -12,7 +12,6 @@ namespace ProjectAssets.Scripts.Enemy
 
         public EnemyFactory(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition, MonoBehaviour monoBehaviour)
         {
-            Debug.Log("EnemyFactory");
             _enemyProvider = enemyProvider;
             _container = container;
             _spawnEnemyPosition = spawnEnemyPosition;

@@ -21,7 +21,8 @@ namespace ProjectAssets.Scripts
         public void TakeDamage(float damage)
         {
             var bloodEffectObject = Instantiate(_bloodEffectPrefab, transform.position, Quaternion.identity);
-            Destroy(bloodEffectObject, 0.5f);
+            
+            Destroy(bloodEffectObject.gameObject, 0.5f);
             
             Health -= damage;
             

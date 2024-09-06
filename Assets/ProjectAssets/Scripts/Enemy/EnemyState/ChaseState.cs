@@ -43,7 +43,14 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
             
             if (distanceToTarget <= _agent.stoppingDistance)
             {
-                _stateMachine.Transit<AttackState>();
+                if (_enemySetting.Type == EnemyType.Raging)
+                {
+                    _stateMachine.Transit<FiringState>();
+                }
+                else
+                {
+                    _stateMachine.Transit<AttackState>();
+                }
             }
         }
     }
