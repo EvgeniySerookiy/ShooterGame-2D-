@@ -16,18 +16,19 @@ namespace ProjectAssets.Scripts.Enemy
         private HealthController _healthController;
         private EnemySetting _enemySetting;
         private MonoBehaviour _monoBehaviour;
-        private BulletEnemy _bulletEnemyPrefab;
+        private Bullet _bulletPrefab;
         
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Animator _animator;
         [SerializeField] private Collider2D _collider;
+        [SerializeField] private Transform _muzzle;
 
         [Inject]
-        public void Construct(PlayerView playerView, BulletEnemy bulletEnemyPrefab)
+        public void Construct(PlayerView playerView, Bullet bulletPrefab)
         {
             _playerView = playerView;
-            _bulletEnemyPrefab = bulletEnemyPrefab;
+            _bulletPrefab = bulletPrefab;
         }
         
         public void Initialize(HealthController healthController, EnemySetting enemySetting, MonoBehaviour monoBehaviour)
@@ -43,10 +44,13 @@ namespace ProjectAssets.Scripts.Enemy
         private void Start()
         {
             _stateMachine = new StateMachine();
-            var chaseState = new ChaseState(_stateMachine, _playerView.transform, _enemySetting, _animator, _agent, _healthController);
-            var attackState = new AttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, _animator, _collider, _monoBehaviour, _healthController);
+            var chaseState = new ChaseState(_stateMachine, _playerView.transform, _enemySetting, _animator, 
+                _agent, _healthController);
+            var attackState = new AttackState(_stateMachine, _agent, _playerView.transform, _enemySetting, 
+                _animator, _collider, _monoBehaviour, _healthController);
             var deathState = new DeathState(_stateMachine, _animator, _agent, _spriteRenderer);
-            var firingState = new FiringState(_stateMachine, _bulletEnemyPrefab, gameObject.transform, _playerView, _enemySetting, _animator, _healthController, _monoBehaviour, _agent);
+            var firingState = new FiringState(_stateMachine, _bulletPrefab, _muzzle, 
+                _playerView, _enemySetting, _animator, _healthController, _monoBehaviour);
             
             _stateMachine.AddStates(chaseState, attackState, deathState, firingState);
             _stateMachine.Transit<ChaseState>();

@@ -18,7 +18,7 @@ namespace ProjectAssets.Scripts
         [SerializeField] private EnemySettings _enemySettings;
         [SerializeField] private CursorSetting _cursorSetting;
         [SerializeField] private Transform _spawnEnemyPosition;
-        [SerializeField] private BulletEnemy _bulletEnemyPrefab;
+        [SerializeField] private Bullet _bulletPrefab;
 
         public override void InstallBindings()
         {
@@ -46,7 +46,7 @@ namespace ProjectAssets.Scripts
             
             Container.Bind<MonoBehaviour>().FromInstance(this).AsSingle();
             
-            Container.Bind<BulletEnemy>().FromInstance(_bulletEnemyPrefab).AsSingle();
+            Container.Bind<Bullet>().FromInstance(_bulletPrefab).AsSingle();
             
         }
     }

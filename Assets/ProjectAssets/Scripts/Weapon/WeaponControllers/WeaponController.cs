@@ -3,7 +3,6 @@ using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Weapon.Settings;
 using ProjectAssets.Scripts.Weapon.WeaponRoot;
 using UnityEngine;
-using UnityEngine.Pool;
 using Object = UnityEngine.Object;
 
 namespace ProjectAssets.Scripts.Weapon.WeaponControllers
@@ -15,9 +14,9 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         public MonoBehaviour MonoBehaviour { get; }
      
         private readonly WeaponProvider _weaponProvider;
-        protected ObjectPool<Bullet> BulletPool;
         private readonly WeaponSetting _settings;
         private readonly IWeaponRoot _weaponRoot;
+        protected BulletPoolManager _bulletPoolManager;
         protected WeaponView _weaponView;
 
 
@@ -29,7 +28,9 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             _weaponProvider = weaponProvider;
             _settings = _weaponProvider.GetWeapon(GetWeaponType());
             _weaponView = Object.Instantiate(_settings.ViewPrefab, _weaponRoot.Root);
-            BulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, defaultCapacity: 100);
+            _bulletPoolManager = new BulletPoolManager(_weaponView.Muzzle, 
+                _settings.BulletSetting.BulletPrefab, _settings.BulletSetting.BulletSpeed, 
+                _settings.BulletSetting.IsEnemyShooting, _settings.BulletSetting.СanPenetrate);
             ResetToDefault();
         }
 
@@ -37,29 +38,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         {
             Damage = _settings.Damage;
             FireRate = _settings.FireRate;
-        }
-
-        private Bullet CreateBullet()
-        {
-            var bullet = Object.Instantiate(_settings.BulletSetting.BulletPrefab, _weaponView.Muzzle);
-            bullet.Initialize(_settings.BulletSetting);
-            return bullet;
-        }
-        
-        
-        private void OnGetBullet(Bullet bullet)
-        {
-            bullet.Hitted += BulletPool.Release;
-            bullet.transform.parent = null;
-            bullet.transform.position = _weaponView.Muzzle.position;
-            bullet.gameObject.SetActive(true);
-        }
-
-        private void OnReleaseBullet(Bullet bullet)
-        {
-            bullet.Hitted -= BulletPool.Release;
-            bullet.transform.parent = _weaponView.Muzzle;
-            bullet.gameObject.SetActive(false);
         }
         
         public void SetActive(bool isActive)
@@ -74,7 +52,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         public void Dispose()
         {
             Object.Destroy(_weaponView.gameObject);
-            BulletPool.Dispose();
+            _bulletPoolManager._bulletPool.Dispose();
         }
     }
 }

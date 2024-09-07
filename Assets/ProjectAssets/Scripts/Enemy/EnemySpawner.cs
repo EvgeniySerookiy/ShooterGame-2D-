@@ -20,8 +20,8 @@ namespace ProjectAssets.Scripts.Enemy
                 
             // Создание врага
             //_enemyFactory.CreateEnemy(randomEnemyType);
-            //StartCoroutine(Spawn());
-            //StartCoroutine(SpawnEnemies());
+            StartCoroutine(Spawn());
+            StartCoroutine(SpawnEnemies());
             StartCoroutine(SpawnFiring());
         }
 
@@ -66,7 +66,7 @@ namespace ProjectAssets.Scripts.Enemy
                 _enemyFactory.CreateEnemy(randomEnemyType);
                 
                 // Ожидание 1 секунды перед следующим спавном
-                yield return new WaitForSeconds(100f);
+                yield return new WaitForSeconds(1f);
             }
         }
     }

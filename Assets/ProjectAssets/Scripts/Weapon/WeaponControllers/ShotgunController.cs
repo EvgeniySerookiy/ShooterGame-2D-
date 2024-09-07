@@ -44,7 +44,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             
                 for (var i = 0; i < directions.Length; i++)
                 {
-                    BulletPool.Get().Shoot(directions[i], Damage);
+                    _bulletPoolManager._bulletPool.Get().Shoot(null,directions[i], Damage);
                 }
                 
                 yield return new WaitForSeconds(FireRate);

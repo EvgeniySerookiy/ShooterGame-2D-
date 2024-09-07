@@ -32,9 +32,9 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             
             while (_isFiring)
             {
-                var bullet = BulletPool.Get();
+                var bullet = _bulletPoolManager._bulletPool.Get();
                 var direction = _weaponView.transform.right;
-                bullet.Shoot(direction, Damage);
+                bullet.Shoot(null,direction, Damage);
                 
                 yield return new WaitForSeconds(FireRate);
             }
