@@ -7,8 +7,8 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
 {
     public class DeathState : StateEnemy
     {
-        public const string DEATH_ANIMATION = "DeathAnimation";
-        public const string DEATH_LAYER = "Death";
+        private const string DEATH_ANIMATION = "DeathAnimation";
+        private const string DEATH_LAYER = "Death";
         
         private readonly Animator _animator;
         private readonly NavMeshAgent _agent;

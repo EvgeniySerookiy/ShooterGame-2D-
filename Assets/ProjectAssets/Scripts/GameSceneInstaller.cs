@@ -26,6 +26,7 @@ namespace ProjectAssets.Scripts
             Container.Bind<WeaponProvider>().AsSingle().WithArguments(_weaponSettings);
             Container.Bind<EnemyProvider>().AsSingle().WithArguments(_enemySettings);
             Container.Bind<IWeaponRoot>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CameraController>().FromComponentInHierarchy().AsSingle();
 
             // Регистрация WeaponFactory
             Container.Bind<WeaponFactory>().AsSingle();

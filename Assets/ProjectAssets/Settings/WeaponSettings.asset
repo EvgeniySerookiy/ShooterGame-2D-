@@ -25,6 +25,12 @@ MonoBehaviour:
       "<\u0421anPenetrate>k__BackingField": 1
       <IsEnemyShooting>k__BackingField: 0
       <BulletPrefab>k__BackingField: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
+    <SpritesMuzzleFlash>k__BackingField:
+    - {fileID: 21300000, guid: bd6df23f9cc73ab41851186d2bc2eb2e, type: 3}
+    - {fileID: 21300000, guid: 412b72e4382ebe64ebb4c5ff04544757, type: 3}
+    - {fileID: 21300000, guid: daded2b30d41a3940895a98aaf4d944f, type: 3}
+    - {fileID: 21300000, guid: 9c765512b1cdf7b4aa80b3b31f357c85, type: 3}
+    - {fileID: 21300000, guid: 88d28db2fcea6774484e8c8ec8d7f432, type: 3}
   - <Type>k__BackingField: 1
     <ViewPrefab>k__BackingField: {fileID: 8610464439728282195, guid: c7b055363ad8b42d2a4b3ec13613859c, type: 3}
     <Damage>k__BackingField: 100
@@ -37,6 +43,12 @@ MonoBehaviour:
       "<\u0421anPenetrate>k__BackingField": 0
       <IsEnemyShooting>k__BackingField: 0
       <BulletPrefab>k__BackingField: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
+    <SpritesMuzzleFlash>k__BackingField:
+    - {fileID: 21300000, guid: bd6df23f9cc73ab41851186d2bc2eb2e, type: 3}
+    - {fileID: 21300000, guid: 412b72e4382ebe64ebb4c5ff04544757, type: 3}
+    - {fileID: 21300000, guid: daded2b30d41a3940895a98aaf4d944f, type: 3}
+    - {fileID: 21300000, guid: 9c765512b1cdf7b4aa80b3b31f357c85, type: 3}
+    - {fileID: 21300000, guid: 88d28db2fcea6774484e8c8ec8d7f432, type: 3}
   - <Type>k__BackingField: 2
     <ViewPrefab>k__BackingField: {fileID: 4666653821172474551, guid: 05a45f9ceceab4b2a9b269a4b2afdbed, type: 3}
     <Damage>k__BackingField: 150
@@ -49,3 +61,9 @@ MonoBehaviour:
       "<\u0421anPenetrate>k__BackingField": 0
       <IsEnemyShooting>k__BackingField: 0
       <BulletPrefab>k__BackingField: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
+    <SpritesMuzzleFlash>k__BackingField:
+    - {fileID: 21300000, guid: bd6df23f9cc73ab41851186d2bc2eb2e, type: 3}
+    - {fileID: 21300000, guid: 412b72e4382ebe64ebb4c5ff04544757, type: 3}
+    - {fileID: 21300000, guid: daded2b30d41a3940895a98aaf4d944f, type: 3}
+    - {fileID: 21300000, guid: 9c765512b1cdf7b4aa80b3b31f357c85, type: 3}
+    - {fileID: 21300000, guid: 88d28db2fcea6774484e8c8ec8d7f432, type: 3}

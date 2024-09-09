@@ -18,5 +18,7 @@ namespace ProjectAssets.Scripts.Weapon.Settings
         // Количество пуль за один выстрел
         [field: SerializeField] public int BulletsPerShot { get; private set; }
         [field: SerializeField] public BulletSetting BulletSetting { get; private set; }
+        [field: SerializeField] public Sprite[] SpritesMuzzleFlash { get; private set; }
+        
     }
 }

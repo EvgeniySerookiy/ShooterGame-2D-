@@ -71,6 +71,9 @@ TagManager:
   - name: Death
     uniqueID: 2081012971
     locked: 0
+  - name: ShadowGround
+    uniqueID: 2156436489
+    locked: 0
   - name: Player
     uniqueID: 2580534205
     locked: 0
@@ -86,6 +89,9 @@ TagManager:
   - name: Bullet
     uniqueID: 3777073081
     locked: 0
+  - name: MuzzleFlash
+    uniqueID: 1697692097
+    locked: 0
   - name: Weapon
     uniqueID: 1965359605
     locked: 0
@@ -100,6 +106,9 @@ TagManager:
     locked: 0
   - name: Bush3
     uniqueID: 4102152015
+    locked: 0
+  - name: ShadowFlyer
+    uniqueID: 3343491955
     locked: 0
   - name: Flyer
     uniqueID: 956037033

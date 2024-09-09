@@ -47,10 +47,23 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
                     _bulletPoolManager._bulletPool.Get().Shoot(null,directions[i], Damage);
                 }
                 
+                MonoBehaviour.StartCoroutine(SetMuzzleFlash());
+                
                 yield return new WaitForSeconds(FireRate);
             }
             
             _isFiring = false;
+        }
+        
+        private IEnumerator SetMuzzleFlash()
+        {
+            _weaponView.SpriteMuzzleFlash.enabled = true;
+            _weaponView.SpriteMuzzleFlash.sprite =
+                _settings.SpritesMuzzleFlash[Random.Range(0, _settings.SpritesMuzzleFlash.Length)];
+
+            yield return new WaitForSeconds(_weaponView.GetMuzzleFlashTime());
+            
+            _weaponView.SpriteMuzzleFlash.enabled = false;
         }
     }
 }

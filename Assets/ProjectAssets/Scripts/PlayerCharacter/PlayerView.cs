@@ -1,4 +1,7 @@
+using System.Collections;
+using Cinemachine;
 using UnityEngine;
+using Zenject;
 
 namespace ProjectAssets.Scripts.PlayerCharacter
 {
@@ -8,9 +11,17 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
         [SerializeField] public HealthController _healthController;
+        [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private Animator _animator;
         
         private float _speed;
+        private CameraController _cameraController;
+        
+        [Inject]
+        public void Construct(CameraController cameraController)
+        {
+            _cameraController = cameraController;
+        }
         
         public void Awake()
         {
@@ -20,9 +31,10 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         
         public void TakeDamage(float damage)
         {
+            _cameraController.ShakeCamera();
             _healthController.TakeDamage(damage);
         }
-
+        
         public void Move(Vector2 direction)
         {
             if (direction != Vector2.zero)

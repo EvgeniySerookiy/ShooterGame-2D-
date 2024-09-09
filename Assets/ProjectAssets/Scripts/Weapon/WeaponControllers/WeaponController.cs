@@ -14,8 +14,9 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         public MonoBehaviour MonoBehaviour { get; }
      
         private readonly WeaponProvider _weaponProvider;
-        private readonly WeaponSetting _settings;
         private readonly IWeaponRoot _weaponRoot;
+        
+        protected WeaponSetting _settings;
         protected BulletPoolManager _bulletPoolManager;
         protected WeaponView _weaponView;
 
