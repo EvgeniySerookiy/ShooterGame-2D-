@@ -7,20 +7,25 @@ namespace ProjectAssets.Scripts.Enemy
     {
         private readonly EnemyProvider _enemyProvider;
         private readonly DiContainer _container;
-        private readonly Transform _spawnEnemyPosition;
+        private readonly Transform[] _spawnEnemyPositions;
         private readonly MonoBehaviour _monoBehaviour;
 
-        public EnemyFactory(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition, MonoBehaviour monoBehaviour)
+        public EnemyFactory(EnemyProvider enemyProvider, DiContainer container, Transform[] spawnEnemyPositions, MonoBehaviour monoBehaviour)
         {
             _enemyProvider = enemyProvider;
             _container = container;
-            _spawnEnemyPosition = spawnEnemyPosition;
+            _spawnEnemyPositions = spawnEnemyPositions;
             _monoBehaviour = monoBehaviour;
         }
         
         public EnemyController CreateEnemy(EnemyType enemyType)
         {
-            return new EnemyController(_enemyProvider, _container, _spawnEnemyPosition, enemyType, _monoBehaviour);
+            return new EnemyController(_enemyProvider, _container, GetRandomSpawnEnemyPosition(), enemyType, _monoBehaviour);
+        }
+
+        private Transform GetRandomSpawnEnemyPosition()
+        {
+            return _spawnEnemyPositions[Random.Range(0, _spawnEnemyPositions.Length)];
         }
     }
 }

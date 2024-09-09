@@ -17,7 +17,7 @@ namespace ProjectAssets.Scripts
         [SerializeField] private WeaponSettings _weaponSettings;
         [SerializeField] private EnemySettings _enemySettings;
         [SerializeField] private CursorSetting _cursorSetting;
-        [SerializeField] private Transform _spawnEnemyPosition;
+        [SerializeField] private Transform[] _spawnEnemyPositions;
         [SerializeField] private Bullet _bulletPrefab;
 
         public override void InstallBindings()
@@ -30,7 +30,7 @@ namespace ProjectAssets.Scripts
 
             // Регистрация WeaponFactory
             Container.Bind<WeaponFactory>().AsSingle();
-            Container.Bind<EnemyFactory>().AsSingle().WithArguments(_spawnEnemyPosition);
+            Container.Bind<EnemyFactory>().AsSingle().WithArguments(_spawnEnemyPositions);
             
             // Регистрация PlayerController
             Container.BindInterfacesAndSelfTo<PlayerWeaponController>().AsSingle();
