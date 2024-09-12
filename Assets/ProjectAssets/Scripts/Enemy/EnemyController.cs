@@ -9,7 +9,8 @@ namespace ProjectAssets.Scripts.Enemy
         private readonly EnemyProvider _enemyProvider;
         private readonly EnemySetting _enemySetting;
 
-        public EnemyController(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition, EnemyType enemyType, MonoBehaviour monoBehaviour)
+        public EnemyController(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition,
+            EnemyType enemyType, MonoBehaviour monoBehaviour)
         {
             _enemyProvider = enemyProvider;
             _enemySetting = _enemyProvider.GetEnemy(enemyType);

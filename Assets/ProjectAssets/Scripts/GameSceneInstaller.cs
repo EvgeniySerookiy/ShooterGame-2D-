@@ -1,3 +1,5 @@
+using ProjectAssets.Scripts.Buffs;
+using ProjectAssets.Scripts.Buffs.Settings;
 using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Cursor;
 using ProjectAssets.Scripts.Cursor.Settings;
@@ -6,7 +8,6 @@ using ProjectAssets.Scripts.Enemy.Settings;
 using ProjectAssets.Scripts.PlayerCharacter;
 using ProjectAssets.Scripts.Weapon;
 using ProjectAssets.Scripts.Weapon.Settings;
-using ProjectAssets.Scripts.Weapon.WeaponRoot;
 using UnityEngine;
 using Zenject;
 
@@ -16,8 +17,8 @@ namespace ProjectAssets.Scripts
     {
         [SerializeField] private WeaponSettings _weaponSettings;
         [SerializeField] private EnemySettings _enemySettings;
+        [SerializeField] private BuffSettings _buffSettings;
         [SerializeField] private CursorSetting _cursorSetting;
-        [SerializeField] private Transform[] _spawnEnemyPositions;
         [SerializeField] private Bullet _bulletPrefab;
 
         public override void InstallBindings()
@@ -25,18 +26,21 @@ namespace ProjectAssets.Scripts
             // Регистрация WeaponProvider и IWeaponRoot
             Container.Bind<WeaponProvider>().AsSingle().WithArguments(_weaponSettings);
             Container.Bind<EnemyProvider>().AsSingle().WithArguments(_enemySettings);
-            Container.Bind<IWeaponRoot>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<BuffProvider>().AsSingle().WithArguments(_buffSettings);
+            Container.Bind<MultiRoot>().FromComponentInHierarchy().AsSingle();
             Container.Bind<CameraController>().FromComponentInHierarchy().AsSingle();
 
             // Регистрация WeaponFactory
             Container.Bind<WeaponFactory>().AsSingle();
-            Container.Bind<EnemyFactory>().AsSingle().WithArguments(_spawnEnemyPositions);
+            Container.Bind<BuffFactory>().AsSingle();
+            Container.Bind<EnemyFactory>().AsSingle();
             
             // Регистрация PlayerController
             Container.BindInterfacesAndSelfTo<PlayerWeaponController>().AsSingle();
 
             Container.Bind<PlayerView>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EnemySpawner>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<BuffSpawner>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<GameInput>().AsSingle();
             
             // Регистрация PlayerMoveController и передача PlayerController

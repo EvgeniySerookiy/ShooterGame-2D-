@@ -1,5 +1,4 @@
 using System.Collections;
-using ProjectAssets.Scripts.Weapon.WeaponRoot;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts.Weapon.WeaponControllers
@@ -7,9 +6,11 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
     public class ShotgunController : WeaponController
     {
         private bool _isFiring;
-        public ShotgunController(WeaponProvider weaponProvider, IWeaponRoot weaponRoot, MonoBehaviour monoBehaviour) : 
-            base(weaponProvider, weaponRoot, monoBehaviour)
+        
+        public ShotgunController(WeaponProvider weaponProvider, MultiRoot multiRoot, MonoBehaviour monoBehaviour) :
+            base(weaponProvider, multiRoot, monoBehaviour)
         {
+            Debug.Log("ShotgunController");
         }
 
         public override WeaponType GetWeaponType()
@@ -21,8 +22,14 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         {
             if (!_isFiring)
             {
+                _isFiring = true;
                 MonoBehaviour.StartCoroutine(FireCoroutine());
             }
+        }
+
+        public override void StopFire()
+        {
+            _isFiring = false;
         }
         
         private IEnumerator FireCoroutine()
@@ -44,15 +51,13 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             
                 for (var i = 0; i < directions.Length; i++)
                 {
-                    _bulletPoolManager._bulletPool.Get().Shoot(null,directions[i], Damage);
+                    _bulletPoolManager.GetBulletFromPool().Shoot(null,directions[i], Damage);
                 }
                 
                 MonoBehaviour.StartCoroutine(SetMuzzleFlash());
                 
                 yield return new WaitForSeconds(FireRate);
             }
-            
-            _isFiring = false;
         }
         
         private IEnumerator SetMuzzleFlash()

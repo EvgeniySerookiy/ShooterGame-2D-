@@ -1,73 +1,52 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
+        [SerializeField] private float _enemySpawnInterval;
+        [SerializeField] private int _maxEnemyCount;
+        [SerializeField] private Transform[] _spawnEnemyPositions;
+        
         private EnemyFactory _enemyFactory;
-
+        
         [Inject]
         public void Construct(EnemyFactory enemyFactory)
         {
             _enemyFactory = enemyFactory;
         }
 
-        public void Start()
+        private void Start()
         {
-            //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
-                
-            // Создание врага
-            //_enemyFactory.CreateEnemy(randomEnemyType);
             StartCoroutine(Spawn());
-            StartCoroutine(SpawnEnemies());
-            StartCoroutine(SpawnFiring());
         }
 
         private IEnumerator Spawn()
         {
-            while (true)
+            while (_maxEnemyCount != 0)
             {
-                // Случайный тип врага
-                //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
                 EnemyType randomEnemyType = EnemyType.Flyer;
-                // Создание врага
-                _enemyFactory.CreateEnemy(randomEnemyType);
                 
-                // Ожидание 1 секунды перед следующим спавном
-                yield return new WaitForSeconds(1f);
+                _enemyFactory.CreateEnemy(GetRandomEnemyType(), GetRandomSpawnEnemyPosition());
+                
+                yield return new WaitForSeconds(_enemySpawnInterval);
+
+                _maxEnemyCount--;
             }
         }
         
-        private IEnumerator SpawnEnemies()
+        private EnemyType GetRandomEnemyType()
         {
-            while (true)
-            {
-                // Случайный тип врага
-                //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
-                EnemyType randomEnemyType = EnemyType.Damn;
-                // Создание врага
-                _enemyFactory.CreateEnemy(randomEnemyType);
-                
-                // Ожидание 1 секунды перед следующим спавном
-                yield return new WaitForSeconds(1f);
-            }
+            return (EnemyType)Random.Range(0, Enum.GetValues(typeof(EnemyType)).Length);
         }
         
-        private IEnumerator SpawnFiring()
+        private Transform GetRandomSpawnEnemyPosition()
         {
-            while (true)
-            {
-                // Случайный тип врага
-                //EnemyType randomEnemyType = (EnemyType)Random.Range(0, System.Enum.GetValues(typeof(EnemyType)).Length);
-                EnemyType randomEnemyType = EnemyType.Raging;
-                // Создание врага
-                _enemyFactory.CreateEnemy(randomEnemyType);
-                
-                // Ожидание 1 секунды перед следующим спавном
-                yield return new WaitForSeconds(1f);
-            }
+            return _spawnEnemyPositions[Random.Range(0, _spawnEnemyPositions.Length)];
         }
     }
 }

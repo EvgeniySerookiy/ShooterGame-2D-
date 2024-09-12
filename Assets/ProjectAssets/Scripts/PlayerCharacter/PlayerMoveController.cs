@@ -9,8 +9,6 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         private readonly GameInput _gameInput;
         private readonly PlayerWeaponController _playerWeaponController;
         
-        
-
         public PlayerMoveController(PlayerView playerView, GameInput gameInput, PlayerWeaponController playerWeaponController)
         {
             _playerView = playerView;

@@ -49,7 +49,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
         private IEnumerator Fire()
         {
             _isAttacking = true;
-            var bullet = _bulletPoolManager._bulletPool.Get();
+            var bullet = _bulletPoolManager.GetBulletFromPool();
             bullet.Shoot(_playerView.transform.position, null, _enemySetting.Damage);
 
             yield return new WaitForSeconds(_enemySetting.AttackCooldown);

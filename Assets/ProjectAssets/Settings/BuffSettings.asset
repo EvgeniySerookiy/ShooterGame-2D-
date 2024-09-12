@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98982dfa45c84691ad15103f434f7822, type: 3}
+  m_Name: BuffSettings
+  m_EditorClassIdentifier: 
+  <Buffs>k__BackingField:
+  - <Type>k__BackingField: 0
+    <Value>k__BackingField: 20
+    <ViewPrefab>k__BackingField: {fileID: 1015072549480042890, guid: 956c8e041bf3547ecb5eea1ee0831a92, type: 3}
+  - <Type>k__BackingField: 1
+    <Value>k__BackingField: 1
+    <ViewPrefab>k__BackingField: {fileID: 6768089219365066372, guid: ac99732d4a3ab4410bcbc6e890e59bd3, type: 3}

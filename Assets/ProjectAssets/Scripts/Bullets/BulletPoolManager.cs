@@ -6,12 +6,13 @@ namespace ProjectAssets.Scripts.Bullets
 {
     public class BulletPoolManager
     {
-        public ObjectPool<Bullet> _bulletPool;
+        private ObjectPool<Bullet> _bulletPool;
         private Transform _muzzle;
         private Bullet _bulletPrefab;
         private float _speed;
         private bool _canPenetrate;
         private bool _isEnemyShooting;
+        private bool _isPoolEnabled = true;
 
         public BulletPoolManager(Transform muzzle, Bullet bulletPrefab, float speed, bool isEnemyShooting, bool canPenetrate)
         {
@@ -22,6 +23,7 @@ namespace ProjectAssets.Scripts.Bullets
             _muzzle = muzzle;
             _bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, defaultCapacity: 20);
         }
+        
         
         private Bullet CreateBullet()
         {
@@ -44,6 +46,11 @@ namespace ProjectAssets.Scripts.Bullets
             bullet.Hitted -= _bulletPool.Release;
             bullet.transform.parent = _muzzle;
             bullet.gameObject.SetActive(false);
+        }
+        
+        public Bullet GetBulletFromPool()
+        {
+            return _bulletPool.Get();
         }
     }
 }

@@ -1,42 +1,35 @@
-using System;
 using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Weapon.Settings;
-using ProjectAssets.Scripts.Weapon.WeaponRoot;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace ProjectAssets.Scripts.Weapon.WeaponControllers
 {
-    public abstract class WeaponController : IDisposable
+    public abstract class WeaponController
     {
         public float Damage { get; set; }
         public float FireRate { get; set; }
         public MonoBehaviour MonoBehaviour { get; }
      
         private readonly WeaponProvider _weaponProvider;
-        private readonly IWeaponRoot _weaponRoot;
+        private readonly MultiRoot _multiRoot;
         
         protected WeaponSetting _settings;
         protected BulletPoolManager _bulletPoolManager;
         protected WeaponView _weaponView;
 
 
-        protected WeaponController (WeaponProvider weaponProvider, IWeaponRoot weaponRoot, MonoBehaviour monoBehaviour)
+        protected WeaponController (WeaponProvider weaponProvider, MultiRoot multiRoot, MonoBehaviour monoBehaviour)
         {
             MonoBehaviour = monoBehaviour;
             Debug.Log("WeaponController");
-            _weaponRoot = weaponRoot;
+            _multiRoot = multiRoot;
             _weaponProvider = weaponProvider;
             _settings = _weaponProvider.GetWeapon(GetWeaponType());
-            _weaponView = Object.Instantiate(_settings.ViewPrefab, _weaponRoot.Root);
+            _weaponView = Object.Instantiate(_settings.ViewPrefab, _multiRoot.GetRootForWeapon());
             _bulletPoolManager = new BulletPoolManager(_weaponView.Muzzle, 
                 _settings.BulletSetting.BulletPrefab, _settings.BulletSetting.BulletSpeed, 
                 _settings.BulletSetting.IsEnemyShooting, _settings.BulletSetting.СanPenetrate);
-            ResetToDefault();
-        }
-
-        public void ResetToDefault()
-        {
             Damage = _settings.Damage;
             FireRate = _settings.FireRate;
         }
@@ -49,11 +42,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         public abstract WeaponType GetWeaponType();
         
         public abstract void Fire();
-        
-        public void Dispose()
-        {
-            Object.Destroy(_weaponView.gameObject);
-            _bulletPoolManager._bulletPool.Dispose();
-        }
+        public abstract void StopFire();
     }
 }

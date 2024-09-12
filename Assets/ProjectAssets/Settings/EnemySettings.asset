@@ -21,7 +21,7 @@ MonoBehaviour:
     <Speed>k__BackingField: 3
     <AttackCooldown>k__BackingField: 1.5
     <AttackSpeed>k__BackingField: 2
-    <AttackDistance>k__BackingField: 1.5
+    <AttackDistance>k__BackingField: 1
   - <Type>k__BackingField: 1
     <ViewPrefab>k__BackingField: {fileID: 2959477976695424097, guid: 2394a9986c7244f838a97832ff066557, type: 3}
     <BloodEffectParticle>k__BackingField: {fileID: 7161937589579847283, guid: d16ef2b3c0ff843dd9e60287d86f467c, type: 3}
@@ -30,7 +30,7 @@ MonoBehaviour:
     <Speed>k__BackingField: 3
     <AttackCooldown>k__BackingField: 2
     <AttackSpeed>k__BackingField: 2
-    <AttackDistance>k__BackingField: 2
+    <AttackDistance>k__BackingField: 1.5
   - <Type>k__BackingField: 2
     <ViewPrefab>k__BackingField: {fileID: 6250821154943064585, guid: 5263340a0f71e46a3b5bfb92449d8988, type: 3}
     <BloodEffectParticle>k__BackingField: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
