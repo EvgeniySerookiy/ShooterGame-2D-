@@ -119,3 +119,6 @@ TagManager:
   - name: Smoke
     uniqueID: 4053420441
     locked: 0
+  - name: New Layer 26
+    uniqueID: 314405655
+    locked: 0

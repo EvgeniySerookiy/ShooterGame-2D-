@@ -1,4 +1,5 @@
 using System.Collections;
+using ProjectAssets.Scripts.Root;
 using UnityEngine;
 
 namespace ProjectAssets.Scripts.Weapon.WeaponControllers

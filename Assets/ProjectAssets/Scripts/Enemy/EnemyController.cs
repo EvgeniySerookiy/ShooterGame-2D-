@@ -6,6 +6,10 @@ namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyController
     {
+        public float Health { get; private set; }
+        public float Damage { get; private set; }
+        public float Speed { get; private set; }
+        
         private readonly EnemyProvider _enemyProvider;
         private readonly EnemySetting _enemySetting;
 
@@ -17,7 +21,7 @@ namespace ProjectAssets.Scripts.Enemy
             
             var enemyView = container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, spawnEnemyPosition);
             
-            var enemyHealthController = enemyView.gameObject.AddComponent<HealthController>();
+            var enemyHealthController = container.InstantiateComponent<HealthController>(enemyView.gameObject);
             enemyHealthController.SetHealth(_enemySetting.Health);
             enemyHealthController.SetHieEffectPrefab(_enemySetting.BloodEffectParticle);
             

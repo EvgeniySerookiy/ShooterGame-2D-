@@ -16,9 +16,9 @@ MonoBehaviour:
   - <Type>k__BackingField: 0
     <ViewPrefab>k__BackingField: {fileID: 1000692121163745581, guid: 25218c8c21f344d51953bfadb6d75602, type: 3}
     <Damage>k__BackingField: 50
-    <DamageRatio>k__BackingField: 1
+    <DamageRatio>k__BackingField: 1.05
     <FireRate>k__BackingField: 1
-    <FireRateRatio>k__BackingField: 1
+    <FireRateRatio>k__BackingField: 1.05
     <BulletsPerShot>k__BackingField: 1
     <BulletSetting>k__BackingField:
       <BulletSpeed>k__BackingField: 15
@@ -34,9 +34,9 @@ MonoBehaviour:
   - <Type>k__BackingField: 1
     <ViewPrefab>k__BackingField: {fileID: 8610464439728282195, guid: c7b055363ad8b42d2a4b3ec13613859c, type: 3}
     <Damage>k__BackingField: 100
-    <DamageRatio>k__BackingField: 1
-    <FireRate>k__BackingField: 0.5
-    <FireRateRatio>k__BackingField: 2
+    <DamageRatio>k__BackingField: 1.05
+    <FireRate>k__BackingField: 1
+    <FireRateRatio>k__BackingField: 1.05
     <BulletsPerShot>k__BackingField: 1
     <BulletSetting>k__BackingField:
       <BulletSpeed>k__BackingField: 5
@@ -52,9 +52,9 @@ MonoBehaviour:
   - <Type>k__BackingField: 2
     <ViewPrefab>k__BackingField: {fileID: 4666653821172474551, guid: 05a45f9ceceab4b2a9b269a4b2afdbed, type: 3}
     <Damage>k__BackingField: 150
-    <DamageRatio>k__BackingField: 1
+    <DamageRatio>k__BackingField: 1.05
     <FireRate>k__BackingField: 2
-    <FireRateRatio>k__BackingField: 2
+    <FireRateRatio>k__BackingField: 1.05
     <BulletsPerShot>k__BackingField: 3
     <BulletSetting>k__BackingField:
       <BulletSpeed>k__BackingField: 10

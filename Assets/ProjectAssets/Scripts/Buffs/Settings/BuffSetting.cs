@@ -7,7 +7,6 @@ namespace ProjectAssets.Scripts.Buffs.Settings
     public class BuffSetting
     {
         [field: SerializeField] public BuffType Type{ get; private set; }
-        [field: SerializeField] public float Value{ get; private set; }
         [field: SerializeField] public BuffView ViewPrefab{ get; private set; }
     }
 }

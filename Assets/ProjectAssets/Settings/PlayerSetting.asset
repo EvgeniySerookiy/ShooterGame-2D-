@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerSetting
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 5
-  <Health>k__BackingField: 300
+  <Health>k__BackingField: 20

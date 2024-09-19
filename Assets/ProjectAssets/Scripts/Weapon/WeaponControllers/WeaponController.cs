@@ -1,4 +1,5 @@
 using ProjectAssets.Scripts.Bullets;
+using ProjectAssets.Scripts.Root;
 using ProjectAssets.Scripts.Weapon.Settings;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -7,8 +8,8 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
 {
     public abstract class WeaponController
     {
-        public float Damage { get; set; }
-        public float FireRate { get; set; }
+        public float Damage { get; private set; }
+        public float FireRate { get; private set; }
         public MonoBehaviour MonoBehaviour { get; }
      
         private readonly WeaponProvider _weaponProvider;
@@ -22,7 +23,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         protected WeaponController (WeaponProvider weaponProvider, MultiRoot multiRoot, MonoBehaviour monoBehaviour)
         {
             MonoBehaviour = monoBehaviour;
-            Debug.Log("WeaponController");
             _multiRoot = multiRoot;
             _weaponProvider = weaponProvider;
             _settings = _weaponProvider.GetWeapon(GetWeaponType());
@@ -30,8 +30,19 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             _bulletPoolManager = new BulletPoolManager(_weaponView.Muzzle, 
                 _settings.BulletSetting.BulletPrefab, _settings.BulletSetting.BulletSpeed, 
                 _settings.BulletSetting.IsEnemyShooting, _settings.BulletSetting.СanPenetrate);
+            
             Damage = _settings.Damage;
             FireRate = _settings.FireRate;
+        }
+        
+        public void IncreaseDamage()
+        {
+            Damage *= _settings.DamageRatio;
+        }
+        
+        public void IncreaseFireRate()
+        {
+            FireRate /= _settings.FireRateRatio;
         }
         
         public void SetActive(bool isActive)

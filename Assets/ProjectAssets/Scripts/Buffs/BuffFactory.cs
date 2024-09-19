@@ -1,3 +1,4 @@
+using ProjectAssets.Scripts.Root;
 using UnityEngine;
 using Zenject;
 
@@ -10,16 +11,16 @@ namespace ProjectAssets.Scripts.Buffs
         private readonly MonoBehaviour _monoBehaviour;
         private readonly MultiRoot _multiRoot;
 
-        public BuffFactory(BuffProvider buffProvider, MonoBehaviour monoBehaviour, MultiRoot multiRoot)
+        public BuffFactory(BuffProvider buffProvider, MultiRoot multiRoot)
         {
             _buffProvider = buffProvider;
-            _monoBehaviour = monoBehaviour;
             _multiRoot = multiRoot;
         }
 
-        public BuffController CreateBuff(BuffType buffType, Vector3 position)
+        public BuffView CreateBuff(BuffType buffType, Vector3 position)
         {
-            return new BuffController(_buffProvider, _multiRoot, buffType, position, _monoBehaviour);
+            var buffSetting = _buffProvider.GetBuff(buffType);
+            return Object.Instantiate(buffSetting.ViewPrefab, position, Quaternion.identity, _multiRoot.GetRootForBuff()).GetComponent<BuffView>();
         }
     }
 }

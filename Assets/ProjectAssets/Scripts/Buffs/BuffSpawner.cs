@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -14,45 +14,74 @@ namespace ProjectAssets.Scripts.Buffs
 
         private int _currentBuffCount;
         private BuffFactory _buffFactory;
+        private List<BuffView> _activeBuffs = new();
+        private PlayerWeaponController _playerWeaponController;
 
         [Inject]
-        public void Construct(BuffFactory buffFactory)
+        public void Construct(BuffFactory buffFactory, PlayerWeaponController playerWeaponController)
         {
             _buffFactory = buffFactory;
-        }
-        
-        private BuffType GetRandomBuffType()
-        {
-            return (BuffType)Random.Range(0, Enum.GetValues(typeof(BuffType)).Length);
+            _playerWeaponController = playerWeaponController;
         }
 
-        private void Update()
+        private void Start()
         {
-            if (_currentBuffCount <= _maxBuffCount)
-            {
-                StartCoroutine(Spawn());
-            }
+            StartCoroutine(Spawn());
         }
-        
+
         private IEnumerator Spawn()
         {
-            while (_maxBuffCount != 0)
+            while (true)
             {
-                _buffFactory.CreateBuff(GetRandomBuffType(), GetRandomSpawnPosition());
+                if (_activeBuffs.Count < _maxBuffCount)
+                {
+                    var buffType = GetRandomBuffType();
+                    var buffView = _buffFactory.CreateBuff(buffType, GetRandomSpawnPosition());
+                    buffView.Initialize(this, buffType);
+                    _activeBuffs.Add(buffView);
+                }
 
-                _currentBuffCount++;
-                
                 yield return new WaitForSeconds(_buffSpawnInterval);
-
-                _maxBuffCount--;
             }
         }
-        
+
+        private BuffType GetRandomBuffType()
+        {
+            return (BuffType)Random.Range(0, System.Enum.GetValues(typeof(BuffType)).Length);
+        }
+
         private Vector3 GetRandomSpawnPosition()
         {
             float x = Random.Range(_gameBoard[0].position.x, _gameBoard[1].position.x);
             float y = Random.Range(_gameBoard[0].position.y, _gameBoard[1].position.y);
             return new Vector3(x, y, 0);
+        }
+
+        public void RemoveBuff(BuffView buffView)
+        {
+            _activeBuffs.Remove(buffView);
+        
+            if (buffView.BuffType == BuffType.Damage)
+            {
+                UpdateDamage();
+            }
+        
+            if (buffView.BuffType == BuffType.FireRate)
+            {
+                UpdateFireRate();
+            }
+        
+            Destroy(buffView.gameObject);
+        }
+
+        private void UpdateDamage()
+        {
+            _playerWeaponController.GetActiveWeaponController().IncreaseDamage();
+        }
+    
+        private void UpdateFireRate()
+        {
+            _playerWeaponController.GetActiveWeaponController().IncreaseFireRate();
         }
     }
 }

@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class MultiRoot : MonoBehaviour
+namespace ProjectAssets.Scripts.Root
 {
-    [SerializeField] private Transform _weaponRoot;
-    [SerializeField] private Transform _buffRoot;
-    
-    public Transform GetRootForWeapon()
+    public class MultiRoot : MonoBehaviour
     {
-        return _weaponRoot;
-    }
+        [SerializeField] private Transform _weaponRoot;
+        [SerializeField] private Transform _buffRoot;
     
-    public Transform GetRootForBuff()
-    {
-        return _buffRoot;
+        public Transform GetRootForWeapon()
+        {
+            return _weaponRoot;
+        }
+    
+        public Transform GetRootForBuff()
+        {
+            return _buffRoot;
+        }
     }
 }

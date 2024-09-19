@@ -32,6 +32,12 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
 
         public override void Update()
         {
+            //if (_target.gameObject == null)
+            //{
+            //    _stateMachine.Transit<IdleState>();
+            //    return;
+            //}
+            
             if (_healthController.Health == 0)
             {
                 _stateMachine.Transit<DeathState>();

@@ -51,8 +51,9 @@ namespace ProjectAssets.Scripts.Enemy
             var deathState = new DeathState(_stateMachine, _animator, _agent, _spriteRenderer);
             var firingState = new FiringState(_stateMachine, _bulletPrefab, _muzzle, 
                 _playerView, _enemySetting, _animator, _healthController, _monoBehaviour);
+            var idleState = new IdleState(_stateMachine, _animator);
             
-            _stateMachine.AddStates(chaseState, attackState, deathState, firingState);
+            _stateMachine.AddStates(chaseState, attackState, deathState, firingState, idleState);
             _stateMachine.Transit<ChaseState>();
         }
 
@@ -64,6 +65,9 @@ namespace ProjectAssets.Scripts.Enemy
         
         private void FacePlayer()
         {
+            if (_healthController._isDead)
+                return;
+            
             Vector2 directionToPlayer = _playerView.transform.position - transform.position;
             
             if (directionToPlayer.x > 0)

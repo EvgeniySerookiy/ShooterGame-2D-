@@ -12,7 +12,7 @@ namespace ProjectAssets.Scripts.Weapon
 
         private PlayerWeaponController _playerWeaponController;
         private MonoBehaviour _monoBehaviour;
-        private bool _isPicked = false;
+        private bool _isPicked;
 
         [Inject]
         public void Construct(PlayerWeaponController playerWeaponController, MonoBehaviour monoBehaviour)
@@ -25,6 +25,13 @@ namespace ProjectAssets.Scripts.Weapon
         {
             if (other.gameObject.TryGetComponent(out PlayerView playerView))
             {
+                if (_playerWeaponController.GetWeaponType() == _weaponType)
+                {
+                    gameObject.SetActive(false);
+                    _monoBehaviour.StartCoroutine(RespawnIcon());
+                    return;
+                }
+                
                 if (!_isPicked)
                 {
                     _isPicked = true;

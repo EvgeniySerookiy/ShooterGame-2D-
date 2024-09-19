@@ -13,6 +13,7 @@ namespace ProjectAssets.Scripts
         private readonly WeaponFactory _weaponFactory;
         private Dictionary<WeaponType, WeaponController> _weapons;
         private WeaponController _weaponController;
+        private WeaponType _weaponType;
         
         public PlayerWeaponController(WeaponFactory weaponFactory)
         {
@@ -28,7 +29,8 @@ namespace ProjectAssets.Scripts
                 weapon.SetActive(false);
             }
 
-            _weaponController = _weapons[GetRandomWeaponType()];
+            _weaponType = GetRandomWeaponType();
+            _weaponController = _weapons[_weaponType];
             _weaponController.SetActive(true);
         }
 
@@ -40,17 +42,29 @@ namespace ProjectAssets.Scripts
         public void Fire()
         {
             _weaponController.Fire();
+            Debug.Log(_weaponController.Damage);
+            Debug.Log(_weaponController.FireRate);
         }
 
         public void SwitchWeapons(WeaponType weaponType)
         {
+            _weaponType = weaponType;
             _weaponController.SetActive(false);
             _weaponController.StopFire();
             
-            _weaponController = _weapons[weaponType];
+            _weaponController = _weapons[_weaponType];
             
             _weaponController.SetActive(true);
-            
+        }
+
+        public WeaponType GetWeaponType()
+        {
+            return _weaponType;
+        }
+        
+        public WeaponController GetActiveWeaponController()
+        {
+            return _weaponController;
         }
     }
 }
