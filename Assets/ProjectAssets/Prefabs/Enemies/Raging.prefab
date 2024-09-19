@@ -298,6 +298,7 @@ MonoBehaviour:
   _animator: {fileID: 2572747292974135581}
   _collider: {fileID: 6425462943645947441}
   _muzzle: {fileID: 6936188991936262572}
+  _spriteLifetime: 2
 --- !u!1 &4187307735971088200
 GameObject:
   m_ObjectHideFlags: 0

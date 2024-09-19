@@ -7,6 +7,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
     public class RifleController : WeaponController
     {
         private bool _isFiring;
+        private Coroutine _fireCoroutine;
         public RifleController(WeaponProvider weaponProvider, MultiRoot multiRoot, MonoBehaviour monoBehaviour) :
             base(weaponProvider, multiRoot, monoBehaviour)
         {
@@ -23,13 +24,14 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             if (!_isFiring)
             {
                 _isFiring = true;
-                MonoBehaviour.StartCoroutine(FireCoroutine());
+                _fireCoroutine = MonoBehaviour.StartCoroutine(FireCoroutine());
             }
         }
 
         public override void StopFire()
         {
             _isFiring = false;
+            MonoBehaviour.StopCoroutine(_fireCoroutine);
         }
         
         private IEnumerator FireCoroutine()
@@ -38,11 +40,20 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             
             while (_isFiring)
             {
+                
+                if (_weaponView == null)
+                {
+                    yield break; // Прекращаем выполнение корутины, если объект уничтожен
+                }
+                
                 var bullet = _bulletPoolManager.GetBulletFromPool();
                 var direction = _weaponView.transform.right;
                 bullet.Shoot(null,direction, Damage);
                 
-                MonoBehaviour.StartCoroutine(SetMuzzleFlash());
+                if (_weaponView != null)
+                {
+                    MonoBehaviour.StartCoroutine(SetMuzzleFlash());
+                }
                 
                 yield return new WaitForSeconds(FireRate);
             }
@@ -50,13 +61,19 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         
         private IEnumerator SetMuzzleFlash()
         {
-            _weaponView.SpriteMuzzleFlash.enabled = true;
-            _weaponView.SpriteMuzzleFlash.sprite =
-                _settings.SpritesMuzzleFlash[Random.Range(0, _settings.SpritesMuzzleFlash.Length)];
+            if (_weaponView != null && _weaponView.SpriteMuzzleFlash != null)
+            {
+                _weaponView.SpriteMuzzleFlash.enabled = true;
+                _weaponView.SpriteMuzzleFlash.sprite =
+                    _settings.SpritesMuzzleFlash[Random.Range(0, _settings.SpritesMuzzleFlash.Length)];
 
-            yield return new WaitForSeconds(_weaponView.GetMuzzleFlashTime());
+                yield return new WaitForSeconds(_weaponView.GetMuzzleFlashTime());
             
-            _weaponView.SpriteMuzzleFlash.enabled = false;
+                if (_weaponView != null && _weaponView.SpriteMuzzleFlash != null)
+                {
+                    _weaponView.SpriteMuzzleFlash.enabled = false;
+                }
+            }
         }
     }
 }

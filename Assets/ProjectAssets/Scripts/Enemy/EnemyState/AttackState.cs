@@ -1,6 +1,7 @@
 using System.Collections;
 using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 using ProjectAssets.Scripts.Enemy.Settings;
+using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +10,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
     public class AttackState : StateEnemy
     {
         private readonly NavMeshAgent _agent;
-        private readonly Transform _target;
+        private readonly PlayerView _playerView;
         private readonly EnemySetting _enemySetting;
         private readonly Animator _animator;
         private readonly Collider2D _collider;
@@ -23,12 +24,12 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
         private bool _isAttacking;
         
 
-        public AttackState(StateMachine stateMachine, NavMeshAgent agent, Transform target, 
+        public AttackState(StateMachine stateMachine, NavMeshAgent agent, PlayerView playerView, 
             EnemySetting enemySetting, Animator animator, Collider2D collider, MonoBehaviour monoBehaviour, 
             HealthController healthController) : base(stateMachine)
         {
             _agent = agent;
-            _target = target;
+            _playerView = playerView;
             _enemySetting = enemySetting;
             _animator = animator;
             _collider = collider;
@@ -44,7 +45,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
         private IEnumerator Attack()
         {
             _originalPosition = _agent.transform.position;
-            _targetPosition = _target.position;
+            _targetPosition = _playerView.transform.position;
 
             _agent.enabled = false;
             _collider.isTrigger = true;
@@ -69,11 +70,11 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
 
         public override void Update()
         {
-            //if (_target.gameObject == null)
-            //{
-            //    _stateMachine.Transit<IdleState>();
-            //    return;
-            //}
+            if (_playerView._isDead)
+            {
+                _stateMachine.Transit<IdleState>();
+                return;
+            }
             
             if (_healthController.Health == 0)
             {

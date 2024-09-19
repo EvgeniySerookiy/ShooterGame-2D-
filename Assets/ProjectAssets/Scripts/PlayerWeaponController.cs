@@ -46,6 +46,11 @@ namespace ProjectAssets.Scripts
             Debug.Log(_weaponController.FireRate);
         }
 
+        public void StopFire()
+        {
+            _weaponController.StopFire();
+        }
+
         public void SwitchWeapons(WeaponType weaponType)
         {
             _weaponType = weaponType;

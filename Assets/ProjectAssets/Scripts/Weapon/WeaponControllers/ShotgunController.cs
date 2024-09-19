@@ -7,6 +7,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
     public class ShotgunController : WeaponController
     {
         private bool _isFiring;
+        private Coroutine _fireCoroutine;
         
         public ShotgunController(WeaponProvider weaponProvider, MultiRoot multiRoot, MonoBehaviour monoBehaviour) :
             base(weaponProvider, multiRoot, monoBehaviour)
@@ -24,21 +25,28 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
             if (!_isFiring)
             {
                 _isFiring = true;
-                MonoBehaviour.StartCoroutine(FireCoroutine());
+                _fireCoroutine = MonoBehaviour.StartCoroutine(FireCoroutine());
             }
         }
 
         public override void StopFire()
         {
             _isFiring = false;
+            MonoBehaviour.StopCoroutine(_fireCoroutine);
         }
         
         private IEnumerator FireCoroutine()
         {
             _isFiring = true;
-            
+
             while (_isFiring)
             {
+                // Проверяем, что _weaponView не уничтожен
+                if (_weaponView == null)
+                {
+                    yield break; // Прекращаем выполнение корутины, если объект уничтожен
+                }
+
                 var direction = _weaponView.transform.right;
                 var rotatedDirectionRight = Quaternion.Euler(0, 0, 15) * direction;
                 var rotatedDirectionLeft = Quaternion.Euler(0, 0, -15) * direction;
@@ -49,27 +57,40 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
                     direction,
                     rotatedDirectionLeft
                 };
-            
+
                 for (var i = 0; i < directions.Length; i++)
                 {
-                    _bulletPoolManager.GetBulletFromPool().Shoot(null,directions[i], Damage);
+                    _bulletPoolManager.GetBulletFromPool().Shoot(null, directions[i], Damage);
                 }
-                
-                MonoBehaviour.StartCoroutine(SetMuzzleFlash());
-                
+
+                // Проверяем перед началом корутины, что объект не уничтожен
+                if (_weaponView != null)
+                {
+                    MonoBehaviour.StartCoroutine(SetMuzzleFlash());
+                }
+
                 yield return new WaitForSeconds(FireRate);
             }
         }
-        
+
         private IEnumerator SetMuzzleFlash()
         {
-            _weaponView.SpriteMuzzleFlash.enabled = true;
-            _weaponView.SpriteMuzzleFlash.sprite =
-                _settings.SpritesMuzzleFlash[Random.Range(0, _settings.SpritesMuzzleFlash.Length)];
+            // Проверка перед активацией вспышки
+            if (_weaponView != null && _weaponView.SpriteMuzzleFlash != null)
+            {
+                _weaponView.SpriteMuzzleFlash.enabled = true;
+                _weaponView.SpriteMuzzleFlash.sprite =
+                    _settings.SpritesMuzzleFlash[Random.Range(0, _settings.SpritesMuzzleFlash.Length)];
 
-            yield return new WaitForSeconds(_weaponView.GetMuzzleFlashTime());
-            
-            _weaponView.SpriteMuzzleFlash.enabled = false;
+                yield return new WaitForSeconds(_weaponView.GetMuzzleFlashTime());
+
+                // Проверка перед отключением вспышки
+                if (_weaponView != null && _weaponView.SpriteMuzzleFlash != null)
+                {
+                    _weaponView.SpriteMuzzleFlash.enabled = false;
+                }
+            }
         }
+
     }
 }

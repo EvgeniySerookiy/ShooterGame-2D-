@@ -61,11 +61,11 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
 
         public override void Update()
         {
-            //if (_playerView.gameObject == null)
-            //{
-            //    _stateMachine.Transit<IdleState>();
-            //    return;
-            //}
+            if (_playerView._isDead)
+            {
+                _stateMachine.Transit<IdleState>();
+                return;
+            }
             
             if (_healthController.Health == 0)
             {
