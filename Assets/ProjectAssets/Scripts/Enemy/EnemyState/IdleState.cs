@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 namespace ProjectAssets.Scripts.Enemy.EnemyState
 {
+    // Доработать
     public class IdleState : StateEnemy
     {
         private readonly Animator _animator;

@@ -43,7 +43,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
                 
                 if (_weaponView == null)
                 {
-                    yield break; // Прекращаем выполнение корутины, если объект уничтожен
+                    yield break;
                 }
                 
                 var bullet = _bulletPoolManager.GetBulletFromPool();

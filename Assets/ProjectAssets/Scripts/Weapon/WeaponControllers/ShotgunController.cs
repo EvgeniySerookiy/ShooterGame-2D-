@@ -41,10 +41,9 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
 
             while (_isFiring)
             {
-                // Проверяем, что _weaponView не уничтожен
                 if (_weaponView == null)
                 {
-                    yield break; // Прекращаем выполнение корутины, если объект уничтожен
+                    yield break;
                 }
 
                 var direction = _weaponView.transform.right;
@@ -62,8 +61,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
                 {
                     _bulletPoolManager.GetBulletFromPool().Shoot(null, directions[i], Damage);
                 }
-
-                // Проверяем перед началом корутины, что объект не уничтожен
+                
                 if (_weaponView != null)
                 {
                     MonoBehaviour.StartCoroutine(SetMuzzleFlash());
@@ -75,7 +73,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
 
         private IEnumerator SetMuzzleFlash()
         {
-            // Проверка перед активацией вспышки
             if (_weaponView != null && _weaponView.SpriteMuzzleFlash != null)
             {
                 _weaponView.SpriteMuzzleFlash.enabled = true;
@@ -83,8 +80,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
                     _settings.SpritesMuzzleFlash[Random.Range(0, _settings.SpritesMuzzleFlash.Length)];
 
                 yield return new WaitForSeconds(_weaponView.GetMuzzleFlashTime());
-
-                // Проверка перед отключением вспышки
+                
                 if (_weaponView != null && _weaponView.SpriteMuzzleFlash != null)
                 {
                     _weaponView.SpriteMuzzleFlash.enabled = false;
