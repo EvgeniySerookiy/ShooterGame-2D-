@@ -5,7 +5,7 @@ using StateMachine = ProjectAssets.Scripts.Enemy.EnemyStateMachine.StateMachine;
 
 namespace ProjectAssets.Scripts.Enemy.EnemyState
 {
-    public class DeathState : StateEnemy
+    public class DeathState : State
     {
         private const string DEATH_ANIMATION = "DeathAnimation";
         private const string DEATH_LAYER = "Death";

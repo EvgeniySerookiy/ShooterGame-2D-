@@ -5,10 +5,10 @@ namespace ProjectAssets.Scripts.Enemy.EnemyStateMachine
 {
     public class StateMachine
     {
-        private Dictionary<Type, StateEnemy> _states = new();
-        private StateEnemy _currentState;
+        private Dictionary<Type, State> _states = new();
+        private State _currentState;
 
-        public void AddStates(params StateEnemy[] states)
+        public void AddStates(params State[] states)
         {
             foreach (var state in states)
             {
@@ -17,7 +17,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyStateMachine
             }
         }
 
-        public void Transit<T>() where T : StateEnemy
+        public void Transit<T>() where T : State
         {
             var type = typeof(T);
             if (_states.TryGetValue(type, out var state))

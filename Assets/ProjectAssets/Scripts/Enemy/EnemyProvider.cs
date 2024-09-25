@@ -1,19 +1,23 @@
+using System.Collections.Generic;
+using System.Linq;
 using ProjectAssets.Scripts.Enemy.Settings;
 
 namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyProvider
     {
-        private readonly EnemySettings _enemySettings;
+        private readonly Dictionary<EnemyType, EnemySetting>  _enemyListSettings;
 
-        private EnemyProvider(EnemySettings enemySettings)
+        private EnemyProvider(EnemyListSettings enemyListSettings)
         {
-            _enemySettings = enemySettings;
+            _enemyListSettings = enemyListSettings
+                .Enemies
+                .ToDictionary(e => e.Type, e => e);
         }
 
         public EnemySetting GetEnemy(EnemyType enemyType)
         {
-            return _enemySettings.Enemies.Find(w => w.Type == enemyType);
+            return _enemyListSettings[enemyType];
         }
     }
 }

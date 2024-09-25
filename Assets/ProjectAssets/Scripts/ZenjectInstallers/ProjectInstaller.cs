@@ -1,7 +1,7 @@
 using ProjectAssets.Scripts.Scenes;
 using Zenject;
 
-namespace ProjectAssets.Scripts
+namespace ProjectAssets.Scripts.ZenjectInstallers
 {
     public class ProjectInstaller : MonoInstaller
     {

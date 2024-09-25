@@ -1,10 +1,10 @@
 namespace ProjectAssets.Scripts.Enemy.EnemyStateMachine
 {
-    public abstract class StateEnemy
+    public abstract class State
     {
         protected readonly StateMachine _stateMachine;
 
-        protected StateEnemy(StateMachine stateMachine)
+        protected State(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }

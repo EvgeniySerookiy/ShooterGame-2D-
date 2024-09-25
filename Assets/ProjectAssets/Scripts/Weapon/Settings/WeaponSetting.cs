@@ -10,13 +10,9 @@ namespace ProjectAssets.Scripts.Weapon.Settings
         [field: SerializeField] public WeaponType Type{ get; private set; }
         [field: SerializeField] public WeaponView ViewPrefab{ get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
-        // Коэфициент урона
         [field: SerializeField] public float DamageRatio { get; private set; }
         [field: SerializeField] public float FireRate { get; private set; }
-        // Коэфициент скоростельности
         [field: SerializeField] public float FireRateRatio { get; private set; }
-        // Количество пуль за один выстрел
-        [field: SerializeField] public int BulletsPerShot { get; private set; }
         [field: SerializeField] public BulletSetting BulletSetting { get; private set; }
         [field: SerializeField] public Sprite[] SpritesMuzzleFlash { get; private set; }
         

@@ -1,4 +1,5 @@
 using ProjectAssets.Scripts.Enemy.Settings;
+using ProjectAssets.Scripts.Health;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +16,7 @@ namespace ProjectAssets.Scripts.Enemy
         private readonly EnemySetting _enemySetting;
 
         public EnemyController(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition,
-            EnemyType enemyType, MonoBehaviour monoBehaviour)
+            EnemyType enemyType, CoroutineLauncher coroutineLauncher)
         {
             _enemyProvider = enemyProvider;
             _enemySetting = _enemyProvider.GetEnemy(enemyType);
@@ -23,10 +24,13 @@ namespace ProjectAssets.Scripts.Enemy
             var enemyView = container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, spawnEnemyPosition);
             
             var enemyHealthController = container.InstantiateComponent<HealthController>(enemyView.gameObject);
+            var bloodEffectController = container.InstantiateComponent<BloodEffectController>(enemyView.gameObject);
+            bloodEffectController.InjectBloodEffectParticle(_enemySetting.BloodEffectParticle);
             enemyHealthController.SetHealth(_enemySetting.Health);
-            enemyHealthController.SetHieEffectPrefab(_enemySetting.BloodEffectParticle);
+            enemyHealthController.InjectBloodEffectController(bloodEffectController);
             
-            enemyView.Initialize(enemyHealthController, _enemySetting, monoBehaviour);
+            
+            enemyView.Initialize(enemyHealthController, _enemySetting, coroutineLauncher);
         }
     }
 }

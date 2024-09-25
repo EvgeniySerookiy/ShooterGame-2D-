@@ -11,35 +11,36 @@ namespace ProjectAssets.Scripts.Weapon
         [SerializeField] private WeaponType _weaponType;
 
         private PlayerWeaponController _playerWeaponController;
-        private MonoBehaviour _monoBehaviour;
+        private CoroutineLauncher _coroutineLauncher;
         private bool _isPicked;
 
         [Inject]
-        public void Construct(PlayerWeaponController playerWeaponController, MonoBehaviour monoBehaviour)
+        public void Construct(PlayerWeaponController playerWeaponController, CoroutineLauncher coroutineLauncher)
         {
-            _monoBehaviour = monoBehaviour;
+            _coroutineLauncher = coroutineLauncher;
             _playerWeaponController = playerWeaponController;
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out PlayerView playerView))
+            if (!other.gameObject.TryGetComponent(out Player playerView)) return;
+            
+            if (_playerWeaponController.WeaponType == _weaponType || !_isPicked)
             {
-                if (_playerWeaponController.GetWeaponType() == _weaponType)
-                {
-                    gameObject.SetActive(false);
-                    _monoBehaviour.StartCoroutine(RespawnIcon());
-                    return;
-                }
-                
-                if (!_isPicked)
-                {
-                    _isPicked = true;
-                    gameObject.SetActive(false);
-                    _playerWeaponController.SwitchWeapons(_weaponType);
-                    _monoBehaviour.StartCoroutine(RespawnIcon());
-                }
+                HandleWeaponPickup();
             }
+        }
+
+        private void HandleWeaponPickup()
+        {
+            if (!_isPicked)
+            {
+                _isPicked = true;
+                _playerWeaponController.SwitchWeapons(_weaponType);
+            }
+    
+            gameObject.SetActive(false);
+            _coroutineLauncher.StartCoroutine(RespawnIcon());
         }
 
         private IEnumerator RespawnIcon()

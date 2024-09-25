@@ -1,47 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using ProjectAssets.Scripts.Buffs.Settings;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
 namespace ProjectAssets.Scripts.Buffs
 {
-    public class BuffSpawner : MonoBehaviour
+    public class BuffSpawner : IInitializable
     {
-        [SerializeField] private float _buffSpawnInterval;
-        [SerializeField] private int _maxBuffCount;
-        [SerializeField] private Transform[] _gameBoard;
-
-        private int _currentBuffCount;
-        private BuffFactory _buffFactory;
-        private List<BuffView> _activeBuffs = new();
-        private PlayerWeaponController _playerWeaponController;
-
-        [Inject]
-        public void Construct(BuffFactory buffFactory, PlayerWeaponController playerWeaponController)
+        private const float CHECK_RADIUS = 0.5f;
+        
+        private readonly int _currentBuffCount;
+        private readonly BuffFactory _buffFactory;
+        private readonly List<BuffView> _activeBuffs = new();
+        private readonly PlayerWeaponController _playerWeaponController;
+        private readonly BuffListSettings _buffListSettings;
+        private readonly Transform[] _gameBoard;
+        private readonly CoroutineLauncher _coroutineLauncher;
+        
+        public BuffSpawner(BuffFactory buffFactory, PlayerWeaponController playerWeaponController, BuffListSettings buffListSettings, CoroutineLauncher coroutineLauncher, Transform[] gameBoard)
         {
+            _gameBoard = gameBoard;
+            _buffListSettings = buffListSettings;
             _buffFactory = buffFactory;
             _playerWeaponController = playerWeaponController;
+            _coroutineLauncher = coroutineLauncher;
         }
-
-        private void Start()
+        
+        public void Initialize()
         {
-            StartCoroutine(Spawn());
+            _coroutineLauncher.StartCoroutine(Spawn());
         }
 
         private IEnumerator Spawn()
         {
             while (true)
             {
-                if (_activeBuffs.Count < _maxBuffCount)
+                if (_activeBuffs.Count < _buffListSettings.MaxBuffCount)
                 {
                     var buffType = GetRandomBuffType();
-                    var buffView = _buffFactory.CreateBuff(buffType, GetRandomSpawnPosition());
+                    var buffPosition = GetRandomSpawnPosition();
+                    
+                    while (IsPositionOccupied(buffPosition))
+                    {
+                        buffPosition = GetRandomSpawnPosition();
+                    }
+                    
+                    var buffView = _buffFactory.CreateBuff(buffType, buffPosition);
                     buffView.Initialize(this, buffType);
                     _activeBuffs.Add(buffView);
                 }
 
-                yield return new WaitForSeconds(_buffSpawnInterval);
+                yield return new WaitForSeconds(_buffListSettings.BuffSpawnInterval);
             }
         }
 
@@ -70,18 +81,24 @@ namespace ProjectAssets.Scripts.Buffs
             {
                 UpdateFireRate();
             }
+            
+            buffView.DestroyBuff();
+        }
         
-            Destroy(buffView.gameObject);
+        private bool IsPositionOccupied(Vector3 position)
+        {
+            Collider2D collider = Physics2D.OverlapCircle(position, CHECK_RADIUS);
+            return collider != null; 
         }
 
         private void UpdateDamage()
         {
-            _playerWeaponController.GetActiveWeaponController().IncreaseDamage();
+            _playerWeaponController.WeaponController.IncreaseDamage();
         }
     
         private void UpdateFireRate()
         {
-            _playerWeaponController.GetActiveWeaponController().IncreaseFireRate();
+            _playerWeaponController.WeaponController.IncreaseFireRate();
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using ProjectAssets.Scripts.Health;
 using ProjectAssets.Scripts.PlayerCharacter;
 using ProjectAssets.Scripts.Waters;
 using UnityEngine;
@@ -8,9 +9,11 @@ namespace ProjectAssets.Scripts.Bullets
     public class Bullet : MonoBehaviour
     {
         public event Action<Bullet> Hitted;
+
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Color _color;
+
         private float _damage;
         private float _speed;
         private bool _canPenetrate;
@@ -19,61 +22,57 @@ namespace ProjectAssets.Scripts.Bullets
         public void Initialize(float speed, bool canPenetrate, bool isEnemyShooting)
         {
             _speed = speed;
-            _isEnemyShooting = isEnemyShooting;
             _canPenetrate = canPenetrate;
+            _isEnemyShooting = isEnemyShooting;
         }
 
-        public void Shoot(Vector2? targetPosition, Vector2? direction, float damage)
+        public void Shoot(Vector2 direction, float damage)
         {
             _damage = damage;
+            _rigidbody2D.velocity = direction.normalized * _speed;
 
-            Vector2 finalDirection;
-
-            if (targetPosition.HasValue)
+            if (_isEnemyShooting)
             {
-                finalDirection = (targetPosition.Value - (Vector2)transform.position).normalized;
                 _spriteRenderer.color = _color;
-                _rigidbody2D.velocity = finalDirection * _speed;
-            }
-            
-            if(direction.HasValue)
-            {
-                finalDirection = direction.Value.normalized;
-                _rigidbody2D.velocity = finalDirection * _speed;
             }
         }
-
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_isEnemyShooting)
+            bool hitSomething = false;
+
+            if (_isEnemyShooting && other.gameObject.TryGetComponent(out Player playerView))
             {
-                if (other.gameObject.TryGetComponent(out PlayerView playerView))
-                {
-                    playerView.TakeDamage(_damage);
-                    Hitted?.Invoke(this);
-                }
+                playerView.HealthController.TakeDamage(_damage);
+                hitSomething = true;
             }
-
-            if (!_isEnemyShooting)
+            
+            if (! _isEnemyShooting && other.gameObject.TryGetComponent(out HealthController enemyHealthController))
             {
-                if (other.gameObject.TryGetComponent(out HealthController enemyHealthController))
-                {
-                    enemyHealthController.TakeDamage(_damage);
+                enemyHealthController.TakeDamage(_damage);
+                hitSomething = true;
 
-                    if (!_canPenetrate)
-                    {
-                        Hitted?.Invoke(this);
-                        _rigidbody2D.velocity = Vector2.zero;
-                    }
+                if (!_canPenetrate)
+                {
+                    StopBullet();
                 }
             }
             
-            if (other.gameObject.TryGetComponent(out Water water))
+            if (other.gameObject.TryGetComponent(out Water _))
+            {
+                StopBullet();
+                hitSomething = true;
+            }
+
+            if (hitSomething)
             {
                 Hitted?.Invoke(this);
-                _rigidbody2D.velocity = Vector2.zero;
             }
+        }
+
+        private void StopBullet()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
         }
     }
 }

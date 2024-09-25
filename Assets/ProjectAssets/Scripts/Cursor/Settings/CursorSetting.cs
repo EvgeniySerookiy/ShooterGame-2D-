@@ -6,6 +6,5 @@ namespace ProjectAssets.Scripts.Cursor.Settings
     public class CursorSetting : ScriptableObject
     {
         [field: SerializeField] public Texture2D customCursorTexture { get; private set; }
-
     }
 }

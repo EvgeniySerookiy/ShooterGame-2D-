@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using ProjectAssets.Scripts.Weapon;
 using ProjectAssets.Scripts.Weapon.WeaponControllers;
-using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -10,28 +9,22 @@ namespace ProjectAssets.Scripts
 {
     public class PlayerWeaponController : IInitializable
     {
-        private readonly WeaponFactory _weaponFactory;
-        private Dictionary<WeaponType, WeaponController> _weapons;
-        private WeaponController _weaponController;
-        private WeaponType _weaponType;
+        public WeaponController WeaponController { get; private set; }
+        public WeaponType WeaponType { get; private set; }
         
-        public PlayerWeaponController(WeaponFactory weaponFactory)
+        private readonly Dictionary<WeaponType, WeaponController> _weapons;
+        
+        
+        public PlayerWeaponController(Dictionary<WeaponType, WeaponController> weapons)
         {
-            Debug.Log("PlayerController");
-            _weaponFactory = weaponFactory;
+            _weapons = weapons;
         }
         
         public void Initialize()
         {
-            _weapons = _weaponFactory.CreateAllWeapons();
-            foreach (var weapon in _weapons.Values)
-            {
-                weapon.SetActive(false);
-            }
-
-            _weaponType = GetRandomWeaponType();
-            _weaponController = _weapons[_weaponType];
-            _weaponController.SetActive(true);
+            WeaponType = GetRandomWeaponType();
+            WeaponController = _weapons[WeaponType];
+            WeaponController.SetActive(true);
         }
 
         private WeaponType GetRandomWeaponType()
@@ -41,35 +34,23 @@ namespace ProjectAssets.Scripts
         
         public void Fire()
         {
-            _weaponController.Fire();
-            Debug.Log(_weaponController.Damage);
-            Debug.Log(_weaponController.FireRate);
+            WeaponController.Fire();
         }
 
         public void StopFire()
         {
-            _weaponController.StopFire();
+            WeaponController.StopFire();
         }
 
         public void SwitchWeapons(WeaponType weaponType)
         {
-            _weaponType = weaponType;
-            _weaponController.SetActive(false);
-            _weaponController.StopFire();
+            WeaponType = weaponType;
+            WeaponController.SetActive(false);
+            WeaponController.StopFire();
             
-            _weaponController = _weapons[_weaponType];
+            WeaponController = _weapons[WeaponType];
             
-            _weaponController.SetActive(true);
-        }
-
-        public WeaponType GetWeaponType()
-        {
-            return _weaponType;
-        }
-        
-        public WeaponController GetActiveWeaponController()
-        {
-            return _weaponController;
+            WeaponController.SetActive(true);
         }
     }
 }

@@ -6,8 +6,8 @@ namespace ProjectAssets.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        private const float _defaultAmplitude = 0f;
-        private const float _defaultFrequency = 0f;
+        private const float DEFAULT_AMPLITUDE = 0f;
+        private const float DEFAULT_FREQUENCY = 0f;
         
         [SerializeField] private float _amplitude;
         [SerializeField] private float _frequency;
@@ -16,7 +16,6 @@ namespace ProjectAssets.Scripts
 
         private CinemachineBasicMultiChannelPerlin _noise;
         
-
         private void Awake()
         {
             _noise = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -34,8 +33,8 @@ namespace ProjectAssets.Scripts
 
             yield return new WaitForSeconds(_duration);
 
-            _noise.m_AmplitudeGain = _defaultAmplitude;
-            _noise.m_FrequencyGain = _defaultFrequency;
+            _noise.m_AmplitudeGain = DEFAULT_AMPLITUDE;
+            _noise.m_FrequencyGain = DEFAULT_FREQUENCY;
         }
     }
 }

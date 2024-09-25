@@ -1,19 +1,23 @@
+using System.Collections.Generic;
+using System.Linq;
 using ProjectAssets.Scripts.Weapon.Settings;
 
 namespace ProjectAssets.Scripts.Weapon
 {
     public class WeaponProvider 
     {
-        private readonly WeaponSettings _weaponSettings;
+        private readonly Dictionary<WeaponType, WeaponSetting>_weaponListSettings;
     
-        public WeaponProvider (WeaponSettings weaponSettings)
+        public WeaponProvider (WeaponListSettings weaponListSettings)
         {
-            _weaponSettings = weaponSettings;
+            _weaponListSettings = weaponListSettings
+                .Weapons
+                .ToDictionary(w => w.Type, w => w);
         }
         
         public WeaponSetting GetWeapon(WeaponType weaponType)
         {
-            return _weaponSettings.Weapons.Find(w => w.Type == weaponType);
+            return _weaponListSettings[weaponType];
         }
     }
 }

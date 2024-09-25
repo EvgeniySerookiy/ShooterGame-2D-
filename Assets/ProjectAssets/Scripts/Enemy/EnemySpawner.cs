@@ -18,13 +18,11 @@ namespace ProjectAssets.Scripts.Enemy
 
         public IEnumerator SpawnEnemies(int enemyCount, float enemySpawnInterval)
         {
-            while (enemyCount > 0)
+            for (int i = enemyCount; i > 0; i--)
             {
                 _enemyFactory.CreateEnemy(GetRandomEnemyType(), GetRandomSpawnEnemyPosition());
 
                 yield return new WaitForSeconds(enemySpawnInterval);
-
-                enemyCount--;
             }
         }
 

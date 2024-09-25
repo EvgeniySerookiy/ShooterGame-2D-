@@ -2,6 +2,7 @@ using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Enemy.EnemyState;
 using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 using ProjectAssets.Scripts.Enemy.Settings;
+using ProjectAssets.Scripts.Health;
 using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,13 +11,13 @@ using Zenject;
 namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyView : MonoBehaviour
-    {
+    { 
         private StateMachine _stateMachine;
-        private PlayerView _playerView;
+        private Player _player;
         private HealthController _healthController;
         private GameStageController _gameStageController;
         private EnemySetting _enemySetting;
-        private MonoBehaviour _monoBehaviour;
+        private CoroutineLauncher _coroutineLauncher;
         private Bullet _bulletPrefab;
         private bool _isDead;
         
@@ -28,33 +29,34 @@ namespace ProjectAssets.Scripts.Enemy
         [SerializeField] private float _spriteLifetime;
 
         [Inject]
-        public void Construct(PlayerView playerView, Bullet bulletPrefab, GameStageController gameStageController)
+        public void Construct(Player player, Bullet bulletPrefab, GameStageController gameStageController)
         {
-            _playerView = playerView;
+            _player = player;
             _bulletPrefab = bulletPrefab;
             _gameStageController = gameStageController;
         }
         
-        public void Initialize(HealthController healthController, EnemySetting enemySetting, MonoBehaviour monoBehaviour)
+        public void Initialize(HealthController healthController, EnemySetting enemySetting, CoroutineLauncher coroutineLauncher)
         {
             _healthController = healthController;
             _healthController.SetHealth(enemySetting.Health);
             _enemySetting = enemySetting;
-            _monoBehaviour = monoBehaviour;
+            _coroutineLauncher = coroutineLauncher;
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
+            _healthController.OnHealthChanged += HandleDamageTaken;
         }
 
         private void Start()
         {
             _stateMachine = new StateMachine();
-            var chaseState = new ChaseState(_stateMachine, _playerView, _enemySetting, _animator, 
+            var chaseState = new ChaseState(_stateMachine, _player, _enemySetting, _animator, 
                 _agent, _healthController);
-            var attackState = new AttackState(_stateMachine, _agent, _playerView, _enemySetting, 
-                _animator, _collider, _monoBehaviour, _healthController);
+            var attackState = new AttackState(_stateMachine, _agent, _player, _enemySetting, 
+                _animator, _collider, _coroutineLauncher, _healthController);
             var deathState = new DeathState(_stateMachine, _animator, _agent, _spriteRenderer);
             var firingState = new FiringState(_stateMachine, _bulletPrefab, _muzzle, 
-                _playerView, _enemySetting, _animator, _healthController, _monoBehaviour);
+                _player, _enemySetting, _animator, _healthController, _coroutineLauncher);
             var idleState = new IdleState(_stateMachine, _animator, _agent);
             
             _stateMachine.AddStates(chaseState, attackState, deathState, firingState, idleState);
@@ -63,20 +65,23 @@ namespace ProjectAssets.Scripts.Enemy
 
         private void Update()
         {
-            if (_healthController.Health <= 0)
-            {
-                Die();
-            }
-            
             _stateMachine.Update();
             FacePlayer();
         }
         
+        private void HandleDamageTaken()
+        {
+            if (_healthController.Health <= 0)
+            {
+                Die();
+            }
+        }
+        
         private void FacePlayer()
         {
-            if (_isDead || _playerView == null) return;
+            if (_isDead || _player == null) return;
             
-            Vector2 directionToPlayer = _playerView.transform.position - transform.position;
+            Vector2 directionToPlayer = _player.transform.position - transform.position;
             
             if (directionToPlayer.x > 0)
             {
@@ -90,9 +95,9 @@ namespace ProjectAssets.Scripts.Enemy
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out PlayerView playerView))
+            if (other.gameObject.TryGetComponent(out Player playerView))
             {
-                playerView.TakeDamage(_enemySetting.Damage);
+                playerView.HealthController.TakeDamage(_enemySetting.Damage);
             }
         }
         
@@ -102,6 +107,11 @@ namespace ProjectAssets.Scripts.Enemy
             
             _gameStageController.OnEnemyKilled();
             Destroy(gameObject, _spriteLifetime);
+        }
+
+        private void OnDestroy()
+        {
+            _healthController.OnHealthChanged -= HandleDamageTaken;
         }
     }
 }

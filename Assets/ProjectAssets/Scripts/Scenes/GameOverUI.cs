@@ -6,21 +6,21 @@ using Zenject;
 
 namespace ProjectAssets.Scripts.Scenes
 {
-    public class GameOverScene : MonoBehaviour
+    public class GameOverUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _gameOverText;
         [SerializeField] private TextMeshProUGUI _waveText;
         [SerializeField] private Button _buttonRestart;
         
         private GameSceneManager _gameSceneManager;
-        private PlayerView _playerView;
+        private Player _player;
         
         [Inject]
-        public void Construct(GameSceneManager gameSceneManager, PlayerView playerView)
+        public void Construct(GameSceneManager gameSceneManager, Player player)
         {
             _gameSceneManager = gameSceneManager;
-            _playerView = playerView;
-            _playerView.OnDie += GameOver;
+            _player = player;
+            _player.OnDie += GameOver;
             _buttonRestart.onClick.AddListener(RestartGame);
             _gameOverText.gameObject.SetActive(false);
             _buttonRestart.gameObject.SetActive(false);
@@ -35,7 +35,7 @@ namespace ProjectAssets.Scripts.Scenes
         
         public void RestartGame()
         {
-            _playerView.OnDie -= GameOver;
+            _player.OnDie -= GameOver;
             _gameSceneManager.LoadGameScene();
             _buttonRestart.onClick.RemoveListener(RestartGame);
         }

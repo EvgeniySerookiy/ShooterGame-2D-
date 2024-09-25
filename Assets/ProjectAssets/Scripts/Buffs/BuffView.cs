@@ -16,10 +16,15 @@ namespace ProjectAssets.Scripts.Buffs
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out PlayerView playerView))
+            if (other.gameObject.TryGetComponent(out Player _))
             {
                 _buffSpawner.RemoveBuff(this);
             }
+        }
+
+        public void DestroyBuff()
+        {
+            Destroy(gameObject);
         }
     }
 }

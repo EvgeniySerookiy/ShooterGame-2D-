@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 43548860}
   - component: {fileID: 43548862}
   - component: {fileID: 43548861}
+  - component: {fileID: 43548863}
   m_Layer: 0
   m_Name: plant4-2x2 (1)
   m_TagString: Untagged
@@ -792,6 +793,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &43548863
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43548859}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000011920929, y: -0.00000047683716}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &45613703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,6 +3763,7 @@ GameObject:
   - component: {fileID: 338924006}
   - component: {fileID: 338924008}
   - component: {fileID: 338924007}
+  - component: {fileID: 338924009}
   m_Layer: 0
   m_Name: Bush3-2x2 (3)
   m_TagString: Untagged
@@ -3817,6 +3854,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &338924009
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338924005}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000023841858, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &359446862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +3900,7 @@ GameObject:
   - component: {fileID: 359446863}
   - component: {fileID: 359446865}
   - component: {fileID: 359446864}
+  - component: {fileID: 359446866}
   m_Layer: 0
   m_Name: plant4-2x2 (9)
   m_TagString: Untagged
@@ -3918,6 +3991,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &359446866
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359446862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &380428220
 GameObject:
   m_ObjectHideFlags: 0
@@ -5179,6 +5287,7 @@ GameObject:
   - component: {fileID: 519532185}
   - component: {fileID: 519532187}
   - component: {fileID: 519532186}
+  - component: {fileID: 519532188}
   m_Layer: 0
   m_Name: plant3-2x2 (1)
   m_TagString: Untagged
@@ -5269,6 +5378,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &519532188
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519532184}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &540971347
 GameObject:
   m_ObjectHideFlags: 0
@@ -6824,6 +6968,7 @@ GameObject:
   - component: {fileID: 651856076}
   - component: {fileID: 651856078}
   - component: {fileID: 651856077}
+  - component: {fileID: 651856079}
   m_Layer: 0
   m_Name: Bush3-2x2 (2)
   m_TagString: Untagged
@@ -6914,6 +7059,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &651856079
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651856075}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000037252903, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &671600215
 GameObject:
   m_ObjectHideFlags: 0
@@ -7442,52 +7622,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &701796373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 701796375}
-  - component: {fileID: 701796374}
-  m_Layer: 0
-  m_Name: MultiRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &701796374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701796373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 403a1fc0ff7b4f18b270bde2095b1bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponRoot: {fileID: 1854028011}
-  _buffRoot: {fileID: 1613709721}
---- !u!4 &701796375
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701796373}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.289715, y: 10.455427, z: -0.2926169}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702627877
 GameObject:
   m_ObjectHideFlags: 0
@@ -7634,7 +7768,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 705727504}
-  - component: {fileID: 705727505}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -7659,18 +7792,6 @@ Transform:
   - {fileID: 710077081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &705727505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705727503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c11c8a36f544d0ba49005e51c4f7723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &706394426
 GameObject:
   m_ObjectHideFlags: 0
@@ -8123,6 +8244,7 @@ GameObject:
   - component: {fileID: 716644910}
   - component: {fileID: 716644912}
   - component: {fileID: 716644911}
+  - component: {fileID: 716644913}
   m_Layer: 0
   m_Name: Bush3-2x2 (12)
   m_TagString: Untagged
@@ -8213,6 +8335,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &716644913
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716644909}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &717194208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10497,6 +10654,7 @@ GameObject:
   - component: {fileID: 892803012}
   - component: {fileID: 892803014}
   - component: {fileID: 892803013}
+  - component: {fileID: 892803015}
   m_Layer: 0
   m_Name: Bush3-2x2 (13)
   m_TagString: Untagged
@@ -10587,6 +10745,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &892803015
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892803011}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &895588521
 GameObject:
   m_ObjectHideFlags: 0
@@ -11717,7 +11910,7 @@ GameObject:
   - component: {fileID: 1010576659}
   - component: {fileID: 1010576658}
   m_Layer: 5
-  m_Name: ButtonReStartGame
+  m_Name: ReStartGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17298,9 +17491,14 @@ MonoBehaviour:
   - {fileID: 487279900}
   - {fileID: 134367970}
   - {fileID: 770316739}
-  _weaponSettings: {fileID: 11400000, guid: c68ee0d83d507427f8cd00896b595f32, type: 2}
-  _enemySettings: {fileID: 11400000, guid: 312bc1bf1f5a34982823880545f4f924, type: 2}
-  _buffSettings: {fileID: 11400000, guid: 4354a76792df341e58625a5d6f6c6e48, type: 2}
+  _gameBoard:
+  - {fileID: 220193314}
+  - {fileID: 710077081}
+  _weaponRoot: {fileID: 1854028011}
+  _buffRoot: {fileID: 1613709721}
+  weaponListSettings: {fileID: 11400000, guid: c68ee0d83d507427f8cd00896b595f32, type: 2}
+  enemyListSettings: {fileID: 11400000, guid: 312bc1bf1f5a34982823880545f4f924, type: 2}
+  buffListSettings: {fileID: 11400000, guid: 4354a76792df341e58625a5d6f6c6e48, type: 2}
   _cursorSetting: {fileID: 11400000, guid: d2ec09fa00d1e4c7da00fdaceb4437bd, type: 2}
   _bulletPrefab: {fileID: -6449878832799474218, guid: af5511919862b4896af73502c54b2b68, type: 3}
 --- !u!1 &1099185042
@@ -17398,6 +17596,7 @@ GameObject:
   - component: {fileID: 1106419708}
   - component: {fileID: 1106419710}
   - component: {fileID: 1106419709}
+  - component: {fileID: 1106419711}
   m_Layer: 0
   m_Name: plant4-2x2 (3)
   m_TagString: Untagged
@@ -17488,6 +17687,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1106419711
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106419707}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &1108442841
 GameObject:
   m_ObjectHideFlags: 0
@@ -18164,6 +18398,7 @@ GameObject:
   - component: {fileID: 1156472225}
   - component: {fileID: 1156472227}
   - component: {fileID: 1156472226}
+  - component: {fileID: 1156472228}
   m_Layer: 0
   m_Name: plant3-2x2 (2)
   m_TagString: Untagged
@@ -18254,6 +18489,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1156472228
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156472224}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000046
 --- !u!1 &1169465459
 GameObject:
   m_ObjectHideFlags: 0
@@ -18265,6 +18535,7 @@ GameObject:
   - component: {fileID: 1169465460}
   - component: {fileID: 1169465462}
   - component: {fileID: 1169465461}
+  - component: {fileID: 1169465463}
   m_Layer: 0
   m_Name: Bush3-2x2 (14)
   m_TagString: Untagged
@@ -18355,6 +18626,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1169465463
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169465459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.00000011920929}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &1170757345
 GameObject:
   m_ObjectHideFlags: 0
@@ -19343,6 +19649,7 @@ GameObject:
   - component: {fileID: 1247852593}
   - component: {fileID: 1247852595}
   - component: {fileID: 1247852594}
+  - component: {fileID: 1247852596}
   m_Layer: 0
   m_Name: Bush3-2x2 (11)
   m_TagString: Untagged
@@ -19433,6 +19740,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1247852596
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247852592}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000059604645, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &1248376905
 GameObject:
   m_ObjectHideFlags: 0
@@ -19444,6 +19786,7 @@ GameObject:
   - component: {fileID: 1248376906}
   - component: {fileID: 1248376908}
   - component: {fileID: 1248376907}
+  - component: {fileID: 1248376909}
   m_Layer: 0
   m_Name: Bush3-2x2 (4)
   m_TagString: Untagged
@@ -19534,6 +19877,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1248376909
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248376905}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6999999
 --- !u!1 &1286442776
 GameObject:
   m_ObjectHideFlags: 0
@@ -25072,6 +25450,7 @@ GameObject:
   - component: {fileID: 1399452475}
   - component: {fileID: 1399452477}
   - component: {fileID: 1399452476}
+  - component: {fileID: 1399452478}
   m_Layer: 0
   m_Name: plant4-2x2 (8)
   m_TagString: Untagged
@@ -25162,6 +25541,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1399452478
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399452474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &1412138201
 GameObject:
   m_ObjectHideFlags: 0
@@ -27791,8 +28205,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613709721}
-  - component: {fileID: 1613709722}
-  - component: {fileID: 1613709723}
   m_Layer: 0
   m_Name: BuffSpawner
   m_TagString: Untagged
@@ -27815,35 +28227,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1613709722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613709720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b714397fcec4ff4b6fae5e550894a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _buffSpawnInterval: 1
-  _maxBuffCount: 6
-  _gameBoard:
-  - {fileID: 220193314}
-  - {fileID: 710077081}
---- !u!114 &1613709723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613709720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02e8046559514410853155e48f13975b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1619220667
 GameObject:
   m_ObjectHideFlags: 0
@@ -36533,6 +36916,8 @@ GameObject:
   - component: {fileID: 1854028016}
   - component: {fileID: 1854028018}
   - component: {fileID: 1854028019}
+  - component: {fileID: 1854028021}
+  - component: {fileID: 1854028020}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36683,10 +37068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd785af88b92d4146aa9f29bd0cefb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <HealthController>k__BackingField: {fileID: 1854028018}
   _rigidbody: {fileID: 1854028013}
   _spriteRenderer: {fileID: 1854028012}
   _playerSetting: {fileID: 11400000, guid: 288e0e56ef9d64e76801e2124430b20e, type: 2}
-  _healthController: {fileID: 1854028018}
   _animator: {fileID: 1854028019}
   _spriteLifetime: 2
 --- !u!114 &1854028018
@@ -36701,9 +37086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa84d42bdaf485795c1e3cf7a185464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarHealth: {fileID: 853638581}
-  _bloodEffectPrefab: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
-  _bloodEffectLifetime: 0.5
+  _healthBarController: {fileID: 1854028021}
+  _bloodEffectController: {fileID: 1854028020}
 --- !u!95 &1854028019
 Animator:
   serializedVersion: 5
@@ -36725,6 +37109,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1854028020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854028010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d307ba10144bee838f09c4a2b04d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bloodEffectPrefab: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
+  _bloodEffectLifetime: 0.3
+--- !u!114 &1854028021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854028010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba5dad5b1f0488ea8eb1c67a1600bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBarImage: {fileID: 853638581}
 --- !u!1 &1875100449
 GameObject:
   m_ObjectHideFlags: 0
@@ -36736,6 +37147,7 @@ GameObject:
   - component: {fileID: 1875100450}
   - component: {fileID: 1875100452}
   - component: {fileID: 1875100451}
+  - component: {fileID: 1875100453}
   m_Layer: 0
   m_Name: plant4-2x2 (4)
   m_TagString: Untagged
@@ -36826,6 +37238,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1875100453
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875100449}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000023841858, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &1876050579
 GameObject:
   m_ObjectHideFlags: 0
@@ -36997,6 +37444,7 @@ GameObject:
   - component: {fileID: 1932467806}
   - component: {fileID: 1932467808}
   - component: {fileID: 1932467807}
+  - component: {fileID: 1932467809}
   m_Layer: 0
   m_Name: plant4-2x2 (5)
   m_TagString: Untagged
@@ -37087,6 +37535,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1932467809
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932467805}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.70000005
 --- !u!1 &1932759298
 GameObject:
   m_ObjectHideFlags: 0
@@ -37098,6 +37581,7 @@ GameObject:
   - component: {fileID: 1932759299}
   - component: {fileID: 1932759301}
   - component: {fileID: 1932759300}
+  - component: {fileID: 1932759302}
   m_Layer: 0
   m_Name: Bush3-2x2 (15)
   m_TagString: Untagged
@@ -37188,6 +37672,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1932759302
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932759298}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6999999
 --- !u!1 &1956963991
 GameObject:
   m_ObjectHideFlags: 0
@@ -37943,7 +38462,7 @@ GameObject:
   - component: {fileID: 2035232585}
   - component: {fileID: 2035232584}
   m_Layer: 5
-  m_Name: TextWave
+  m_Name: WaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39326,6 +39845,7 @@ SpriteRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1097983524}
   - {fileID: 519420032}
   - {fileID: 824804666}
   - {fileID: 571315506}
@@ -39333,11 +39853,9 @@ SceneRoots:
   - {fileID: 1854028011}
   - {fileID: 705727504}
   - {fileID: 558843811}
-  - {fileID: 1097983524}
   - {fileID: 1066118999}
   - {fileID: 1286442777}
   - {fileID: 1613709721}
-  - {fileID: 701796375}
   - {fileID: 997726050}
   - {fileID: 402896203}
   - {fileID: 1446808098}

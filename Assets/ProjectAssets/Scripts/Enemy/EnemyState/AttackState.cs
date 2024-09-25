@@ -1,20 +1,21 @@
 using System.Collections;
 using ProjectAssets.Scripts.Enemy.EnemyStateMachine;
 using ProjectAssets.Scripts.Enemy.Settings;
+using ProjectAssets.Scripts.Health;
 using ProjectAssets.Scripts.PlayerCharacter;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace ProjectAssets.Scripts.Enemy.EnemyState
 {
-    public class AttackState : StateEnemy
+    public class AttackState : State
     {
         private readonly NavMeshAgent _agent;
-        private readonly PlayerView _playerView;
+        private readonly Player _player;
         private readonly EnemySetting _enemySetting;
         private readonly Animator _animator;
         private readonly Collider2D _collider;
-        private readonly MonoBehaviour _monoBehaviour;
+        private readonly CoroutineLauncher _coroutineLauncher;
         private readonly HealthController _healthController;
        
         private Vector3 _originalPosition;
@@ -24,16 +25,16 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
         private bool _isAttacking;
         
 
-        public AttackState(StateMachine stateMachine, NavMeshAgent agent, PlayerView playerView, 
-            EnemySetting enemySetting, Animator animator, Collider2D collider, MonoBehaviour monoBehaviour, 
+        public AttackState(StateMachine stateMachine, NavMeshAgent agent, Player player, 
+            EnemySetting enemySetting, Animator animator, Collider2D collider, CoroutineLauncher coroutineLauncher, 
             HealthController healthController) : base(stateMachine)
         {
             _agent = agent;
-            _playerView = playerView;
+            _player = player;
             _enemySetting = enemySetting;
             _animator = animator;
             _collider = collider;
-            _monoBehaviour = monoBehaviour;
+            _coroutineLauncher = coroutineLauncher;
             _healthController = healthController;
         }
 
@@ -45,7 +46,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
         private IEnumerator Attack()
         {
             _originalPosition = _agent.transform.position;
-            _targetPosition = _playerView.transform.position;
+            _targetPosition = _player.transform.position;
 
             _agent.enabled = false;
             _collider.isTrigger = true;
@@ -70,7 +71,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
 
         public override void Update()
         {
-            if (_playerView._isDead)
+            if (_player.IsDead)
             {
                 _stateMachine.Transit<IdleState>();
                 return;
@@ -84,7 +85,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
             
             if (!_isAttacking && Time.time >= _lastAttackTime + _enemySetting.AttackCooldown)
             {
-                _monoBehaviour.StartCoroutine(Attack());
+                _coroutineLauncher.StartCoroutine(Attack());
                 _lastAttackTime = Time.time;
             }
         }

@@ -1,22 +1,23 @@
 using System;
+using ProjectAssets.Scripts.Health;
 using UnityEngine;
 using Zenject;
 
 namespace ProjectAssets.Scripts.PlayerCharacter
 {
-    public class PlayerView : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         public event Action OnDie;
+        public bool IsDead { get; private set; }
+        [field:SerializeField] public HealthController HealthController { get; private set; }
         
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
-        [SerializeField] private HealthController _healthController;
         [SerializeField] private Animator _animator;
         [SerializeField] private float _spriteLifetime;
         
         private float _speed;
-        public bool _isDead { get; private set; }
         private CameraController _cameraController;
         private PlayerWeaponController _playerWeaponController;
          
@@ -30,17 +31,18 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         public void Awake()
         {
             _speed = _playerSetting.Speed;
-            _healthController.SetHealth(_playerSetting.Health);
+            HealthController.SetHealth(_playerSetting.Health);
+            
+            HealthController.OnHealthChanged += HandleDamageTaken;
         }
-        
-        public void TakeDamage(float damage)
+
+        private void HandleDamageTaken()
         {
-            if (_isDead) return;
+            if (IsDead) return;
             
             _cameraController.ShakeCamera();
-            _healthController.TakeDamage(damage);
             
-            if (_healthController.Health <= 0)
+            if (HealthController.Health <= 0)
             {
                 Die();
             }
@@ -49,14 +51,14 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         private void Die()
         {
             OnDie?.Invoke();
-            _isDead = true;
+            IsDead = true;
             
             _rigidbody.velocity = Vector2.zero;
             _animator.Play("DeathAnimation");
             _rigidbody = null;
             
             _playerWeaponController.StopFire();
-            _playerWeaponController.GetActiveWeaponController().SetActive(false);
+            _playerWeaponController.WeaponController.SetActive(false);
             
             
             Destroy(gameObject, _spriteLifetime);
@@ -64,7 +66,7 @@ namespace ProjectAssets.Scripts.PlayerCharacter
 
         public void Move(Vector2 direction)
         {
-            if (_isDead) return;
+            if (IsDead) return;
             
             if (direction != Vector2.zero)
             {
@@ -90,6 +92,11 @@ namespace ProjectAssets.Scripts.PlayerCharacter
             {
                 _spriteRenderer.flipX = false;
             }
+        }
+
+        private void OnDestroy()
+        {
+            HealthController.OnHealthChanged -= HandleDamageTaken;
         }
     }
 }
