@@ -16,18 +16,24 @@ MonoBehaviour:
   - <Type>k__BackingField: 0
     <ViewPrefab>k__BackingField: {fileID: 4500626333540586250, guid: 021e57174733c4d0b808cc248319e330, type: 3}
     <BloodEffectParticle>k__BackingField: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
-    <Health>k__BackingField: 150
-    <Damage>k__BackingField: 10
-    <Speed>k__BackingField: 3
+    <Health>k__BackingField: 352.8
+    <HealthRatio>k__BackingField: 0.2
+    <Damage>k__BackingField: 19.435
+    <DamageRatio>k__BackingField: 0.15
+    <Speed>k__BackingField: 4.752
+    <SpeedRatio>k__BackingField: 0.1
     <AttackCooldown>k__BackingField: 1.5
     <AttackSpeed>k__BackingField: 2
     <AttackDistance>k__BackingField: 1
   - <Type>k__BackingField: 1
     <ViewPrefab>k__BackingField: {fileID: 2959477976695424097, guid: 2394a9986c7244f838a97832ff066557, type: 3}
     <BloodEffectParticle>k__BackingField: {fileID: 7161937589579847283, guid: d16ef2b3c0ff843dd9e60287d86f467c, type: 3}
-    <Health>k__BackingField: 150
-    <Damage>k__BackingField: 10
-    <Speed>k__BackingField: 3
+    <Health>k__BackingField: 622.08
+    <HealthRatio>k__BackingField: 0.2
+    <Damage>k__BackingField: 30.682003
+    <DamageRatio>k__BackingField: 0.15
+    <Speed>k__BackingField: 6.6066003
+    <SpeedRatio>k__BackingField: 0.1
     <AttackCooldown>k__BackingField: 2
     <AttackSpeed>k__BackingField: 2
     <AttackDistance>k__BackingField: 1.5
@@ -35,8 +41,11 @@ MonoBehaviour:
     <ViewPrefab>k__BackingField: {fileID: 6250821154943064585, guid: 5263340a0f71e46a3b5bfb92449d8988, type: 3}
     <BloodEffectParticle>k__BackingField: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
     <Health>k__BackingField: 300
+    <HealthRatio>k__BackingField: 0.2
     <Damage>k__BackingField: 10
+    <DamageRatio>k__BackingField: 0.15
     <Speed>k__BackingField: 3
+    <SpeedRatio>k__BackingField: 0.1
     <AttackCooldown>k__BackingField: 2
     <AttackSpeed>k__BackingField: 5
     <AttackDistance>k__BackingField: 5

@@ -46,7 +46,7 @@ namespace ProjectAssets.Scripts
                 _currentWave++;
             }
         }
-
+        
         private void ShowWaveNumber()
         {
             _waveText.text = $"Wave {_currentWave}";
@@ -58,7 +58,7 @@ namespace ProjectAssets.Scripts
             _waveText.gameObject.SetActive(false);
             _remainingEnemies = _initialEnemyCount;
 
-            yield return _enemySpawner.SpawnEnemies(_initialEnemyCount, _enemySpawnInterval);
+            yield return _enemySpawner.SpawnEnemies(_initialEnemyCount, _enemySpawnInterval, _currentWave);
         }
 
         public void OnEnemyKilled()

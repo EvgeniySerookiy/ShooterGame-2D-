@@ -40,18 +40,18 @@ namespace ProjectAssets.Scripts.Bullets
         private void OnTriggerEnter2D(Collider2D other)
         {
             bool hitSomething = false;
-
+            
             if (_isEnemyShooting && other.gameObject.TryGetComponent(out Player playerView))
             {
                 playerView.HealthController.TakeDamage(_damage);
                 hitSomething = true;
             }
             
-            if (! _isEnemyShooting && other.gameObject.TryGetComponent(out HealthController enemyHealthController))
+            if (!_isEnemyShooting && other.gameObject.TryGetComponent(out HealthController enemyHealthController))
             {
                 enemyHealthController.TakeDamage(_damage);
                 hitSomething = true;
-
+                
                 if (!_canPenetrate)
                 {
                     StopBullet();
@@ -63,13 +63,13 @@ namespace ProjectAssets.Scripts.Bullets
                 StopBullet();
                 hitSomething = true;
             }
-
-            if (hitSomething)
+            
+            if (hitSomething && !_canPenetrate)
             {
                 Hitted?.Invoke(this);
             }
         }
-
+        
         private void StopBullet()
         {
             _rigidbody2D.velocity = Vector2.zero;

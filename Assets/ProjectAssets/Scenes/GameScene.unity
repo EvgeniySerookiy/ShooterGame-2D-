@@ -25853,6 +25853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemySpawnInterval: 2
   _initialEnemyCount: 1
+  _enemyIncrement: 2
   _timeWaveText: 3
   _waveText: {fileID: 2035232584}
 --- !u!4 &1446808098
@@ -37067,12 +37068,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd785af88b92d4146aa9f29bd0cefb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HealthController>k__BackingField: {fileID: 1854028018}
   _rigidbody: {fileID: 1854028013}
   _spriteRenderer: {fileID: 1854028012}
   _playerSetting: {fileID: 11400000, guid: 288e0e56ef9d64e76801e2124430b20e, type: 2}
   _animator: {fileID: 1854028019}
   _spriteLifetime: 2
+  <HealthController>k__BackingField: {fileID: 1854028018}
 --- !u!114 &1854028018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37120,8 +37121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d307ba10144bee838f09c4a2b04d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodEffectPrefab: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
   _bloodEffectLifetime: 0.3
+  _bloodEffectPrefab: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
 --- !u!114 &1854028021
 MonoBehaviour:
   m_ObjectHideFlags: 0

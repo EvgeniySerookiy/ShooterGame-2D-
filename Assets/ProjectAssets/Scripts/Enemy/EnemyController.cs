@@ -8,13 +8,17 @@ namespace ProjectAssets.Scripts.Enemy
     public class EnemyController
     {
         private readonly EnemyProvider _enemyProvider;
-        private readonly EnemySetting _enemySetting;
+        private EnemySetting _enemySetting;
+        private EnemyStatsScaler _enemyStatsScaler = new();
+        
 
         public EnemyController(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition,
-            EnemyType enemyType, CoroutineLauncher coroutineLauncher)
+            EnemyType enemyType, CoroutineLauncher coroutineLauncher, int waveNumber)
         {
             _enemyProvider = enemyProvider;
-            _enemySetting = _enemyProvider.GetEnemy(enemyType);
+            _enemySetting = _enemyProvider.GetEnemy(enemyType).Clone();
+            
+            _enemyStatsScaler.ScaleStats(_enemySetting, waveNumber);
             
             var enemyView = container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, spawnEnemyPosition);
             
@@ -24,8 +28,11 @@ namespace ProjectAssets.Scripts.Enemy
             enemyHealthController.SetHealth(_enemySetting.Health);
             enemyHealthController.InjectBloodEffectController(bloodEffectController);
             
-            
             enemyView.Initialize(enemyHealthController, _enemySetting, coroutineLauncher);
+            
+            Debug.Log(_enemySetting.Health);
+            Debug.Log(_enemySetting.Damage);
+            Debug.Log(_enemySetting.Speed);
         }
     }
 }

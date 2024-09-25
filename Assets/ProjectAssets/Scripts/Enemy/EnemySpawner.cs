@@ -16,11 +16,11 @@ namespace ProjectAssets.Scripts.Enemy
             _spawnEnemyPositions = spawnEnemyPositions;
         }
 
-        public IEnumerator SpawnEnemies(int enemyCount, float enemySpawnInterval)
+        public IEnumerator SpawnEnemies(int enemyCount, float enemySpawnInterval, int waveNumber)
         {
             for (int i = enemyCount; i > 0; i--)
             {
-                _enemyFactory.CreateEnemy(GetRandomEnemyType(), GetRandomSpawnEnemyPosition());
+                _enemyFactory.CreateEnemy(GetRandomEnemyType(), GetRandomSpawnEnemyPosition(), waveNumber);
 
                 yield return new WaitForSeconds(enemySpawnInterval);
             }

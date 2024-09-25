@@ -16,9 +16,9 @@ namespace ProjectAssets.Scripts.Enemy
             _coroutineLauncher = coroutineLauncher;
         }
         
-        public EnemyController CreateEnemy(EnemyType enemyType, Transform spawnEnemyPosition)
+        public EnemyController CreateEnemy(EnemyType enemyType, Transform spawnEnemyPosition, int waveNumber)
         {
-            return new EnemyController(_enemyProvider, _container, spawnEnemyPosition, enemyType, _coroutineLauncher);
+            return new EnemyController(_enemyProvider, _container, spawnEnemyPosition, enemyType, _coroutineLauncher, waveNumber);
         }
     }
 }
