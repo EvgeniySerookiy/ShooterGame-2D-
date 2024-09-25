@@ -6,13 +6,15 @@ namespace ProjectAssets.Scripts.Bullets
 {
     public class BulletPoolManager
     {
-        private ObjectPool<Bullet> _bulletPool;
-        private Transform _muzzle;
-        private Bullet _bulletPrefab;
         private float _speed;
         private bool _canPenetrate;
         private bool _isEnemyShooting;
         private bool _isPoolEnabled = true;
+        
+        private ObjectPool<Bullet> _bulletPool;
+        private Transform _muzzle;
+        private Bullet _bulletPrefab;
+        
 
         public BulletPoolManager(Transform muzzle, Bullet bulletPrefab, float speed, bool isEnemyShooting, bool canPenetrate)
         {

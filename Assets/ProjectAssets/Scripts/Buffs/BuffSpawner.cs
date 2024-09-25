@@ -12,6 +12,7 @@ namespace ProjectAssets.Scripts.Buffs
         private const float CHECK_RADIUS = 0.5f;
         
         private readonly int _currentBuffCount;
+        
         private readonly BuffFactory _buffFactory;
         private readonly List<BuffView> _activeBuffs = new();
         private readonly PlayerWeaponController _playerWeaponController;

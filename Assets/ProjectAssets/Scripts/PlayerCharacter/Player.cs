@@ -8,18 +8,20 @@ namespace ProjectAssets.Scripts.PlayerCharacter
     public class Player : MonoBehaviour
     {
         public event Action OnDie;
-        public bool IsDead { get; private set; }
-        [field:SerializeField] public HealthController HealthController { get; private set; }
+        
+        private float _speed;
+        
+        private CameraController _cameraController;
+        private PlayerWeaponController _playerWeaponController;
         
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
         [SerializeField] private Animator _animator;
         [SerializeField] private float _spriteLifetime;
+        [field:SerializeField] public HealthController HealthController { get; private set; }
+        public bool IsDead { get; private set; }
         
-        private float _speed;
-        private CameraController _cameraController;
-        private PlayerWeaponController _playerWeaponController;
          
         [Inject]
         public void Construct(CameraController cameraController, PlayerWeaponController playerWeaponController)

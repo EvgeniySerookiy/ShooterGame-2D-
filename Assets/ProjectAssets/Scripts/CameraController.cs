@@ -9,12 +9,15 @@ namespace ProjectAssets.Scripts
         private const float DEFAULT_AMPLITUDE = 0f;
         private const float DEFAULT_FREQUENCY = 0f;
         
+        private CinemachineBasicMultiChannelPerlin _noise;
+        
         [SerializeField] private float _amplitude;
         [SerializeField] private float _frequency;
         [SerializeField] private float _duration;
+        
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
 
-        private CinemachineBasicMultiChannelPerlin _noise;
+        
         
         private void Awake()
         {

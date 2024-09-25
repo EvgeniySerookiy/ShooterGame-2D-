@@ -9,10 +9,9 @@ namespace ProjectAssets.Scripts
 {
     public class PlayerWeaponController : IInitializable
     {
+        private readonly Dictionary<WeaponType, WeaponController> _weapons;
         public WeaponController WeaponController { get; private set; }
         public WeaponType WeaponType { get; private set; }
-        
-        private readonly Dictionary<WeaponType, WeaponController> _weapons;
         
         
         public PlayerWeaponController(Dictionary<WeaponType, WeaponController> weapons)

@@ -12,6 +12,8 @@ namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyView : MonoBehaviour
     { 
+        private bool _isDead;
+        
         private StateMachine _stateMachine;
         private Player _player;
         private HealthController _healthController;
@@ -19,14 +21,15 @@ namespace ProjectAssets.Scripts.Enemy
         private EnemySetting _enemySetting;
         private CoroutineLauncher _coroutineLauncher;
         private Bullet _bulletPrefab;
-        private bool _isDead;
+        
+        [SerializeField] private float _spriteLifetime;
         
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Animator _animator;
         [SerializeField] private Collider2D _collider;
         [SerializeField] private Transform _muzzle;
-        [SerializeField] private float _spriteLifetime;
+        
 
         [Inject]
         public void Construct(Player player, Bullet bulletPrefab, GameStageController gameStageController)
@@ -80,17 +83,9 @@ namespace ProjectAssets.Scripts.Enemy
         private void FacePlayer()
         {
             if (_isDead || _player == null) return;
-            
-            Vector2 directionToPlayer = _player.transform.position - transform.position;
-            
-            if (directionToPlayer.x > 0)
-            {
-                _spriteRenderer.flipX = false;
-            }
-            else if (directionToPlayer.x < 0)
-            {
-                _spriteRenderer.flipX = true;
-            }
+
+            var directionToPlayer = _player.transform.position - transform.position;
+            _spriteRenderer.flipX = directionToPlayer.x < 0;
         }
         
         private void OnTriggerEnter2D(Collider2D other)
@@ -103,7 +98,11 @@ namespace ProjectAssets.Scripts.Enemy
         
         private void Die()
         {
+            if(_isDead) return;
+            
             _isDead = true;
+            
+            Destroy(_collider);
             
             _gameStageController.OnEnemyKilled();
             Destroy(gameObject, _spriteLifetime);

@@ -7,11 +7,6 @@ namespace ProjectAssets.Scripts.Enemy
 {
     public class EnemyController
     {
-        // Доработать, чтобы с каждой волной увекличивались параметры у врагов
-        public float Health { get; private set; }
-        public float Damage { get; private set; }
-        public float Speed { get; private set; }
-        
         private readonly EnemyProvider _enemyProvider;
         private readonly EnemySetting _enemySetting;
 

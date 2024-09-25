@@ -8,15 +8,17 @@ namespace ProjectAssets.Scripts
 {
     public class GameStageController : MonoBehaviour
     {
-        [SerializeField] private float _enemySpawnInterval;
-        [SerializeField] private int _initialEnemyCount;
-        [SerializeField] private float _timeWaveText;
-        [SerializeField] private TextMeshProUGUI _waveText;
-
         private int _currentWave = 1;
         private int _remainingEnemies;
+        
         private EnemySpawner _enemySpawner;
-
+        
+        [SerializeField] private float _enemySpawnInterval;
+        [SerializeField] private int _initialEnemyCount;
+        [SerializeField] private int _enemyIncrement;
+        [SerializeField] private float _timeWaveText;
+        [SerializeField] private TextMeshProUGUI _waveText;
+        
         [Inject]
         public void Construct(EnemySpawner enemySpawner)
         {
@@ -40,6 +42,7 @@ namespace ProjectAssets.Scripts
                 
                 yield return new WaitUntil(() => _remainingEnemies == 0);
                 
+                _initialEnemyCount += _enemyIncrement;
                 _currentWave++;
             }
         }

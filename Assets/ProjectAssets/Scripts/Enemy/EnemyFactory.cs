@@ -7,7 +7,6 @@ namespace ProjectAssets.Scripts.Enemy
     {
         private readonly EnemyProvider _enemyProvider;
         private readonly DiContainer _container;
-        
         private readonly CoroutineLauncher _coroutineLauncher;
 
         public EnemyFactory(EnemyProvider enemyProvider, DiContainer container, CoroutineLauncher coroutineLauncher)

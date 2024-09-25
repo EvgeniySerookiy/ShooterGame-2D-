@@ -7,12 +7,13 @@ namespace ProjectAssets.Scripts.Weapon
 {
     public class WeaponIcon : MonoBehaviour
     {
-        [SerializeField] private float respawnTime;
-        [SerializeField] private WeaponType _weaponType;
-
+        private bool _isPicked;
+        
         private PlayerWeaponController _playerWeaponController;
         private CoroutineLauncher _coroutineLauncher;
-        private bool _isPicked;
+        
+        [SerializeField] private float respawnTime;
+        [SerializeField] private WeaponType _weaponType;
 
         [Inject]
         public void Construct(PlayerWeaponController playerWeaponController, CoroutineLauncher coroutineLauncher)

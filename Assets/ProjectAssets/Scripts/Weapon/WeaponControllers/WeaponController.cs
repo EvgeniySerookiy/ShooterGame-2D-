@@ -14,12 +14,13 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         private readonly WeaponProvider _weaponProvider;
         private readonly Transform _weaponRoot;
         
+        protected bool _isFiring;
         protected Coroutine _fireCoroutine;
         protected CoroutineLauncher _coroutineLauncher;
         protected WeaponSetting _settings;
         protected BulletPoolManager _bulletPoolManager;
         protected WeaponView _weaponView;
-        protected bool _isFiring;
+        
         
         protected WeaponController(WeaponProvider weaponProvider, Transform weaponRoot, CoroutineLauncher coroutineLauncher)
         {

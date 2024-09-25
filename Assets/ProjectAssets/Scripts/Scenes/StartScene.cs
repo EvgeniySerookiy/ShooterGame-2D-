@@ -6,9 +6,11 @@ namespace ProjectAssets.Scripts.Scenes
 {
     public class StartScene : MonoBehaviour
     {
+        private GameSceneManager _gameSceneManager;
+        
         [SerializeField] private Button _buttonStart;
 
-        private GameSceneManager _gameSceneManager;
+        
         
         [Inject]
         public void Construct(GameSceneManager gameSceneManager)
