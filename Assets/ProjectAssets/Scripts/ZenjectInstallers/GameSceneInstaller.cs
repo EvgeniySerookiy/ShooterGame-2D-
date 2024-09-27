@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using ProjectAssets.Scripts.Buffs;
 using ProjectAssets.Scripts.Buffs.Settings;
 using ProjectAssets.Scripts.Bullets;
-using ProjectAssets.Scripts.Cursor;
-using ProjectAssets.Scripts.Cursor.Settings;
 using ProjectAssets.Scripts.Enemy;
 using ProjectAssets.Scripts.Enemy.Settings;
 using ProjectAssets.Scripts.PlayerCharacter;

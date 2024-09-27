@@ -5,11 +5,22 @@ namespace ProjectAssets.Scripts.Health
 {
     public class HealthBarController : MonoBehaviour
     {
+        [SerializeField] private HealthController _healthController;
         [SerializeField] private Image _healthBarImage;
 
-        public void UpdateHealthBar(float healthPercentage)
+        private void Awake()
+        {
+            _healthController.HealthUpdated += UpdateHealthBar;
+        }
+
+        private void UpdateHealthBar(float healthPercentage)
         {
             _healthBarImage.fillAmount = healthPercentage;
+        }
+
+        private void OnDestroy()
+        {
+            _healthController.HealthUpdated -= UpdateHealthBar;
         }
     }
 }

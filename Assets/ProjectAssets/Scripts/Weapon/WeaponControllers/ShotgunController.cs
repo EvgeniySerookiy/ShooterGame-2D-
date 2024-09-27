@@ -10,10 +10,7 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         {
         }
 
-        public override WeaponType GetWeaponType()
-        {
-            return WeaponType.Shotgun;
-        }
+        public override WeaponType WeaponType => WeaponType.Shotgun;
         
         protected override IEnumerator FireCoroutine()
         {

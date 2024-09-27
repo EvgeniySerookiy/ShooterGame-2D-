@@ -10,29 +10,37 @@ namespace ProjectAssets.Scripts.Enemy
         private readonly EnemyProvider _enemyProvider;
         private EnemySetting _enemySetting;
         private EnemyStatsScaler _enemyStatsScaler = new();
+        private int _waveNumber;
+        private DiContainer _container;
+        private Transform _spawnEnemyPosition;
+        private CoroutineLauncher _coroutineLauncher;
         
-
         public EnemyController(EnemyProvider enemyProvider, DiContainer container, Transform spawnEnemyPosition,
             EnemyType enemyType, CoroutineLauncher coroutineLauncher, int waveNumber)
         {
+            _coroutineLauncher = coroutineLauncher;
+            _spawnEnemyPosition = spawnEnemyPosition;
+            _container = container;
+            _waveNumber = waveNumber;
             _enemyProvider = enemyProvider;
             _enemySetting = _enemyProvider.GetEnemy(enemyType).Clone();
+            InitializeEnemySettings();
+        }
+        
+        public void InitializeEnemySettings()
+        { 
+            _enemySetting.UpdateEnemySettingsFromRemote();
             
-            _enemyStatsScaler.ScaleStats(_enemySetting, waveNumber);
+            _enemyStatsScaler.ScaleStats(_enemySetting, _waveNumber);
             
-            var enemyView = container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, spawnEnemyPosition);
+            var enemyView = _container.InstantiatePrefabForComponent<EnemyView>(_enemySetting.ViewPrefab, _spawnEnemyPosition);
             
-            var enemyHealthController = container.InstantiateComponent<HealthController>(enemyView.gameObject);
-            var bloodEffectController = container.InstantiateComponent<BloodEffectController>(enemyView.gameObject);
-            bloodEffectController.InjectBloodEffectParticle(_enemySetting.BloodEffectParticle);
+            var enemyHealthController = _container.InstantiateComponent<HealthController>(enemyView.gameObject);
+            var bloodEffectController = _container.InstantiateComponent<BloodEffectController>(enemyView.gameObject);
+            bloodEffectController.InjectHealthController(enemyHealthController, _enemySetting.BloodEffectParticle);
             enemyHealthController.SetHealth(_enemySetting.Health);
-            enemyHealthController.InjectBloodEffectController(bloodEffectController);
             
-            enemyView.Initialize(enemyHealthController, _enemySetting, coroutineLauncher);
-            
-            Debug.Log(_enemySetting.Health);
-            Debug.Log(_enemySetting.Damage);
-            Debug.Log(_enemySetting.Speed);
+            enemyView.Initialize(enemyHealthController, _enemySetting, _coroutineLauncher);
         }
     }
 }

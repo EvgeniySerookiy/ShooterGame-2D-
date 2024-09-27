@@ -37086,8 +37086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa84d42bdaf485795c1e3cf7a185464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBarController: {fileID: 1854028021}
-  _bloodEffectController: {fileID: 1854028020}
 --- !u!95 &1854028019
 Animator:
   serializedVersion: 5
@@ -37122,6 +37120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodEffectLifetime: 0.3
+  _healthController: {fileID: 1854028018}
   _bloodEffectPrefab: {fileID: 7161937589579847283, guid: f0187889113244eb28706c4d43b3a4d4, type: 3}
 --- !u!114 &1854028021
 MonoBehaviour:
@@ -37135,6 +37134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba5dad5b1f0488ea8eb1c67a1600bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthController: {fileID: 1854028018}
   _healthBarImage: {fileID: 853638581}
 --- !u!1 &1875100449
 GameObject:

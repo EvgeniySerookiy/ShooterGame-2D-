@@ -6,16 +6,11 @@ namespace ProjectAssets.Scripts.Health
     public class HealthController : MonoBehaviour
     { 
         public event Action OnHealthChanged;
+        public event Action OnBloodEffect;
+        public event Action<float> HealthUpdated;
+        
         public float Health { get; private set; }
         private float _maxHealth;
-        
-        [SerializeField] private HealthBarController _healthBarController;
-        [SerializeField] private BloodEffectController _bloodEffectController;
-
-        public void InjectBloodEffectController(BloodEffectController bloodEffectController)
-        {
-            _bloodEffectController = bloodEffectController;
-        }
         
         public void SetHealth(float health)
         {
@@ -27,8 +22,8 @@ namespace ProjectAssets.Scripts.Health
         {
             Health = Mathf.Max(Health - damage, 0);
             OnHealthChanged?.Invoke();
-            _bloodEffectController.ShowBloodEffect();
-            _healthBarController?.UpdateHealthBar(Health / _maxHealth);
+            OnBloodEffect?.Invoke();
+            HealthUpdated?.Invoke(Health / _maxHealth);
         }
     }
 }

@@ -8,9 +8,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
 {
     public abstract class WeaponController
     {
-        public float Damage { get; private set; }
-        public float FireRate { get; private set; }
-        
         private readonly WeaponProvider _weaponProvider;
         private readonly Transform _weaponRoot;
         
@@ -21,13 +18,18 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         protected BulletPoolManager _bulletPoolManager;
         protected WeaponView _weaponView;
         
+        public float Damage { get; private set; }
+        public float FireRate { get; private set; }
+        
+        public abstract WeaponType WeaponType { get; }
+        
         
         protected WeaponController(WeaponProvider weaponProvider, Transform weaponRoot, CoroutineLauncher coroutineLauncher)
         {
             _coroutineLauncher = coroutineLauncher;
             _weaponRoot = weaponRoot;
             _weaponProvider = weaponProvider;
-            _settings = _weaponProvider.GetWeapon(GetWeaponType());
+            _settings = _weaponProvider.GetWeapon(WeaponType);
             _weaponView = Object.Instantiate(_settings.ViewPrefab, _weaponRoot.transform);
             _bulletPoolManager = new BulletPoolManager(
                 _weaponView.Muzzle,
@@ -55,8 +57,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         {
             _weaponView.gameObject.SetActive(isActive);
         }
-
-        public abstract WeaponType GetWeaponType();
 
         public void Fire()
         {

@@ -9,9 +9,6 @@ namespace ProjectAssets.Scripts.Weapon.WeaponControllers
         {
         }
 
-        public override WeaponType GetWeaponType()
-        {
-            return WeaponType.Pistol;
-        }
+        public override WeaponType WeaponType => WeaponType.Pistol;
     }
 }

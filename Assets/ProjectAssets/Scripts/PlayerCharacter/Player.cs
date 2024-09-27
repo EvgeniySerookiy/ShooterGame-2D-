@@ -10,7 +10,6 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         public event Action OnDie;
         
         private float _speed;
-        
         private CameraController _cameraController;
         private PlayerWeaponController _playerWeaponController;
         
@@ -36,6 +35,7 @@ namespace ProjectAssets.Scripts.PlayerCharacter
             HealthController.SetHealth(_playerSetting.Health);
             
             HealthController.OnHealthChanged += HandleDamageTaken;
+            
         }
 
         private void HandleDamageTaken()

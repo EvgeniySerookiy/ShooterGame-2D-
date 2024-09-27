@@ -39,39 +39,37 @@ namespace ProjectAssets.Scripts.Bullets
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            bool hitSomething = false;
-            
-            if (_isEnemyShooting && other.gameObject.TryGetComponent(out Player playerView))
+            if (_isEnemyShooting)
             {
-                playerView.HealthController.TakeDamage(_damage);
-                hitSomething = true;
-            }
-            
-            if (!_isEnemyShooting && other.gameObject.TryGetComponent(out HealthController enemyHealthController))
-            {
-                enemyHealthController.TakeDamage(_damage);
-                hitSomething = true;
-                
-                if (!_canPenetrate)
+                if (other.gameObject.TryGetComponent(out Player player))
                 {
-                    StopBullet();
+                    player.HealthController.TakeDamage(_damage);
+                    OnHit();
                 }
             }
-            
+
+            if (!_isEnemyShooting)
+            {
+                if (other.gameObject.TryGetComponent(out HealthController healthController))
+                {
+                    healthController.TakeDamage(_damage);
+
+                    if (!_canPenetrate)
+                    {
+                        OnHit();
+                    }
+                }
+            }
+
             if (other.gameObject.TryGetComponent(out Water _))
             {
-                StopBullet();
-                hitSomething = true;
-            }
-            
-            if (hitSomething && !_canPenetrate)
-            {
-                Hitted?.Invoke(this);
+                OnHit();
             }
         }
         
-        private void StopBullet()
+        private void OnHit()
         {
+            Hitted?.Invoke(this);
             _rigidbody2D.velocity = Vector2.zero;
         }
     }
