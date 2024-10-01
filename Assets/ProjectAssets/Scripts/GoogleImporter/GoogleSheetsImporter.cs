@@ -71,8 +71,6 @@ namespace ProjectAssets.Scripts.GoogleImporter
                         var header = _headers[j];
                         
                         parser.Parse(header, cell.ToString());
-                        
-                        Debug.Log($"Header: {header}, value: {cell}.");
                     }
                 }
                 

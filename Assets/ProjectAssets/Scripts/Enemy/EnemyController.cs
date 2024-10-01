@@ -32,7 +32,6 @@ namespace ProjectAssets.Scripts.Enemy
         
         public async void InitializeEnemySettings()
         { 
-            await _configImportsMenu.LoadItemmsEnemySetting();
             _configImportsMenu.UpdateEnemySettingFromJson(_enemySetting);
             Debug.Log("______");
             Debug.Log(_enemySetting.Health);

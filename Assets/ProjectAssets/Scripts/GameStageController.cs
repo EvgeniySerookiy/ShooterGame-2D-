@@ -1,5 +1,6 @@
 using System.Collections;
 using ProjectAssets.Scripts.Enemy;
+using ProjectAssets.Scripts.GoogleImporter;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -12,6 +13,7 @@ namespace ProjectAssets.Scripts
         private int _remainingEnemies;
         
         private EnemySpawner _enemySpawner;
+        private ConfigImportsMenu _configImportsMenu;
         
         [SerializeField] private float _enemySpawnInterval;
         [SerializeField] private int _initialEnemyCount;
@@ -19,14 +21,17 @@ namespace ProjectAssets.Scripts
         [SerializeField] private float _timeWaveText;
         [SerializeField] private TextMeshProUGUI _waveText;
         
+        
         [Inject]
-        public void Construct(EnemySpawner enemySpawner)
+        public void Construct(EnemySpawner enemySpawner, ConfigImportsMenu configImportsMenu)
         {
             _enemySpawner = enemySpawner;
+            _configImportsMenu = configImportsMenu;
         }
 
-        private void Start()
+        private async void Start()
         {
+            await _configImportsMenu.LoadItemmsEnemySetting();
             StartCoroutine(WaveCycle());
         }
 
