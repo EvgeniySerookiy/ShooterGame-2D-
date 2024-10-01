@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
     "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.cinemachine": "2.9.7",
@@ -7,7 +8,6 @@
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.27",
     "com.unity.ide.visualstudio": "2.0.22",
-    "com.unity.remote-config": "4.1.1",
     "com.unity.services.cloudcode": "2.7.1",
     "com.unity.services.cloudsave": "3.2.0",
     "com.unity.test-framework": "1.1.33",

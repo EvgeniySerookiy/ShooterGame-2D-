@@ -1,7 +1,6 @@
 using System;
 using ProjectAssets.Scripts.Blood;
 using UnityEngine;
-using Unity.Services.RemoteConfig;
 
 
 namespace ProjectAssets.Scripts.Enemy.Settings
@@ -9,12 +8,9 @@ namespace ProjectAssets.Scripts.Enemy.Settings
     [Serializable]
     public class EnemySetting
     {
-        private struct UserAttributes { }
-        private struct AppAttributes { }
-        
-        [field: SerializeField] public EnemyType Type{ get; private set; }
-        [field: SerializeField] public EnemyView ViewPrefab { get; private set; }
-        [field: SerializeField] public BloodEffectParticle BloodEffectParticle { get; private set; }
+        [field: SerializeField] public EnemyType Type { get; set; }
+        [field: SerializeField] public EnemyView ViewPrefab;
+        [field: SerializeField] public BloodEffectParticle BloodEffectParticle;
         [field: SerializeField] public float Health { get; private set; }
         [field: SerializeField] public float HealthRatio { get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
@@ -25,24 +21,6 @@ namespace ProjectAssets.Scripts.Enemy.Settings
         [field: SerializeField] public float AttackSpeed { get; private set; }
         [field: SerializeField] public float AttackDistance { get; private set; }
         
-        public void UpdateEnemySettingsFromRemote()
-        {
-            RemoteConfigService.Instance.FetchConfigs(new UserAttributes(), new AppAttributes());
-            
-            string enemyTypeKey = Type.ToString();
-            
-            RemoteConfigService.Instance.appConfig.GetFloat($"{enemyTypeKey}_health", Health);
-            RemoteConfigService.Instance.appConfig.GetFloat($"{enemyTypeKey}_damage", Damage);
-            RemoteConfigService.Instance.appConfig.GetFloat($"{enemyTypeKey}_speed", Speed);
-            RemoteConfigService.Instance.appConfig.GetFloat($"{enemyTypeKey}_healthRatio", HealthRatio);
-            RemoteConfigService.Instance.appConfig.GetFloat($"{enemyTypeKey}_damageRatio", DamageRatio);
-            RemoteConfigService.Instance.appConfig.GetFloat($"{enemyTypeKey}_speedRatio", SpeedRatio);
-            
-            Debug.Log($"{enemyTypeKey}_health");
-            Debug.Log(Health);
-            Debug.Log(Damage);
-            Debug.Log(Speed);
-        }
         
         public EnemySetting Clone()
         {
@@ -62,6 +40,21 @@ namespace ProjectAssets.Scripts.Enemy.Settings
         public void SetSpeed(float speed)
         {
             Speed = Mathf.Max(0, speed);
+        }
+        
+        public void SetHealthRatio(float healthRatio)
+        {
+            HealthRatio = Mathf.Max(0, healthRatio);
+        }
+        
+        public void SetDamageRatio(float damageRatio)
+        {
+            DamageRatio = Mathf.Max(0, damageRatio);
+        }
+        
+        public void SetSpeedRatio(float speedRatio)
+        {
+            SpeedRatio = Mathf.Max(0, speedRatio);
         }
     }
 }

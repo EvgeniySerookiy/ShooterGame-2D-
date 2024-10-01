@@ -4,6 +4,7 @@ using ProjectAssets.Scripts.Buffs.Settings;
 using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Enemy;
 using ProjectAssets.Scripts.Enemy.Settings;
+using ProjectAssets.Scripts.GoogleImporter;
 using ProjectAssets.Scripts.PlayerCharacter;
 using ProjectAssets.Scripts.Weapon;
 using ProjectAssets.Scripts.Weapon.Settings;
@@ -34,6 +35,7 @@ namespace ProjectAssets.Scripts.ZenjectInstallers
             Container.Bind<BuffFactory>().AsSingle().WithArguments(_buffRoot);
             Container.Bind<WeaponFactory>().AsSingle().WithArguments(_weaponRoot);
             Container.Bind<EnemySpawner>().AsSingle().WithArguments(_spawnEnemyPositions);
+            Container.Bind<ConfigImportsMenu>().AsSingle();
             
             Container.Bind<CameraController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<GameStageController>().FromComponentInHierarchy().AsSingle();
