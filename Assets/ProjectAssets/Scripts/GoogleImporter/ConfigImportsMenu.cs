@@ -1,7 +1,5 @@
 using System.Threading.Tasks;
-using ProjectAssets.Scripts.Enemy;
 using ProjectAssets.Scripts.Enemy.Settings;
-using UnityEngine;
 
 namespace ProjectAssets.Scripts.GoogleImporter
 {

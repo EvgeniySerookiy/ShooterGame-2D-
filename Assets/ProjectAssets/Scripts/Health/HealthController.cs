@@ -16,6 +16,7 @@ namespace ProjectAssets.Scripts.Health
         {
             Health = health;
             _maxHealth = health;
+            HealthUpdated?.Invoke(Health / _maxHealth);
         }
 
         public void TakeDamage(float damage)

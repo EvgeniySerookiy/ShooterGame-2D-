@@ -7,7 +7,7 @@ namespace ProjectAssets.Scripts.PlayerCharacter
 {
     public class Player : MonoBehaviour
     {
-        public event Action OnDie;
+        public event Action OnDying;
         
         private float _speed;
         private CameraController _cameraController;
@@ -17,10 +17,10 @@ namespace ProjectAssets.Scripts.PlayerCharacter
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private PlayerSetting _playerSetting;
         [SerializeField] private Animator _animator;
-        [SerializeField] private float _spriteLifetime;
+        [field:SerializeField] public float _spriteLifetime { get; private set; }
         [field:SerializeField] public HealthController HealthController { get; private set; }
         public bool IsDead { get; private set; }
-        
+         
          
         [Inject]
         public void Construct(CameraController cameraController, PlayerWeaponController playerWeaponController)
@@ -46,24 +46,39 @@ namespace ProjectAssets.Scripts.PlayerCharacter
             
             if (HealthController.Health <= 0)
             {
-                Die();
+                Dying();
             }
         }
+        
 
-        private void Die()
+        private void Dying()
         {
-            OnDie?.Invoke();
+            OnDying?.Invoke();
             IsDead = true;
-            
-            _rigidbody.velocity = Vector2.zero;
+            Time.timeScale = 0;
+        }
+
+        public void PlayDeathAnimation()
+        {
             _animator.Play("DeathAnimation");
+        }
+
+        public void Died()
+        {
+            _rigidbody.velocity = Vector2.zero;
             _rigidbody = null;
             
             _playerWeaponController.StopFire();
             _playerWeaponController.WeaponController.SetActive(false);
             
-            
             Destroy(gameObject, _spriteLifetime);
+        }
+
+        public void Continue()
+        {
+            IsDead = false;
+            HealthController.SetHealth(_playerSetting.Health);
+            Time.timeScale = 1;
         }
 
         public void Move(Vector2 direction)
