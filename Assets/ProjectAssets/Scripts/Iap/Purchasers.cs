@@ -1,15 +1,19 @@
 using System;
+using UnityEngine;
+using Zenject;
 
-namespace UnityEngine.Advertisements
+namespace ProjectAssets.Scripts.Iap
 {
-    public class Purchasers : MonoBehaviour
+    public class Purchasers : IPurchasers, IInitializable
     {
         public event Action OnPurchaseComplete;
+        
         public bool IsAdsPurchased()
         {
             return PlayerPrefs.GetInt("remove_ads") == 1;
         }
-        private void Awake()
+        
+        public void Initialize()
         {
             PlayerPrefs.SetInt("remove_ads", 0);
         }

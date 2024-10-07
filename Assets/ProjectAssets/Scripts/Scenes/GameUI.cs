@@ -1,9 +1,9 @@
 using System.Collections;
 using ProjectAssets.Scripts.Ads;
+using ProjectAssets.Scripts.Iap;
 using ProjectAssets.Scripts.PlayerCharacter;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Advertisements;
 using UnityEngine.UI;
 using Zenject;
 
@@ -11,9 +11,6 @@ namespace ProjectAssets.Scripts.Scenes
 {
     public class GameUI : MonoBehaviour
     {
-        [SerializeField] private Purchasers _purchasers;
-        [SerializeField] private InterstitialAds _interstitialAds;
-        [SerializeField] private RewardedAds _rewardedAds;
         [SerializeField] private TextMeshProUGUI _gameOverText;
         [SerializeField] private TextMeshProUGUI _waveText;
         [SerializeField] private Button _buttonRestart;
@@ -23,22 +20,35 @@ namespace ProjectAssets.Scripts.Scenes
         [SerializeField] private Button _buttonRemoveAds;
 
         private GameSceneManager _gameSceneManager;
+        private IPurchasers _purchasers;
+        private IInterstitialAds _interstitialAds;
+        private IRewardedAds _rewardedAds;
         private Player _player;
 
         [Inject]
-        public void Construct(GameSceneManager gameSceneManager, Player player)
+        public void Construct(GameSceneManager gameSceneManager, Player player, IPurchasers purchasers, 
+            IInterstitialAds interstitialAds, IRewardedAds rewardedAds)
         {
+            _rewardedAds = rewardedAds;
+            _interstitialAds = interstitialAds;
+            _purchasers = purchasers;
             _gameSceneManager = gameSceneManager;
             _rewardedAds.OnAdCompleted += ContinueGame;
             _player = player;
             _player.OnDying += Dying;
             _purchasers.OnPurchaseComplete += DisableAds;
-
+            
+            _buttonRemoveAds.onClick.AddListener(() => _purchasers.CompletePurchase());
             _buttonRestart.onClick.AddListener(RestartGame);
             _buttonPause.onClick.AddListener(PauseGame);
             _buttonPlay.onClick.AddListener(PlayGame);
             _buttonContinue.onClick.AddListener(ShowRewardedAd);
-            
+
+            SetInitialUIState();
+        }
+        
+        private void SetInitialUIState()
+        {
             _buttonRemoveAds.gameObject.SetActive(false);
             _gameOverText.gameObject.SetActive(false);
             _buttonRestart.gameObject.SetActive(false);

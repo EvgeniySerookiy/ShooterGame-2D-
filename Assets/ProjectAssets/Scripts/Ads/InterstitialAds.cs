@@ -1,24 +1,19 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using Zenject;
 
 namespace ProjectAssets.Scripts.Ads
 {
-    public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+    public class InterstitialAds : IUnityAdsLoadListener, IUnityAdsShowListener, IInitializable, IInterstitialAds
     {
+        private const string _ANDROID_ADID = "Interstitial_Android";
+        
         private string _adID;
         private bool _adsEnabled = true;
         
-        [SerializeField] private string _androidAdID = "Interstitial_Android";
-        
-
-        public void DisableAds()
+        public void Initialize()
         {
-            _adsEnabled = false;
-        }
-        
-        private void Awake()
-        {
-            _adID = _androidAdID;
+            _adID = _ANDROID_ADID;
             LoadAd();
         }
 
@@ -33,6 +28,11 @@ namespace ProjectAssets.Scripts.Ads
             {
                 Advertisement.Show(_adID, this);
             }
+        }
+        
+        public void DisableAds()
+        {
+            _adsEnabled = false;
         }
 
         public void OnUnityAdsAdLoaded(string placementId)

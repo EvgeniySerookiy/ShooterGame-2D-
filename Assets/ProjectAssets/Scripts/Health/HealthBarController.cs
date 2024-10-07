@@ -10,17 +10,19 @@ namespace ProjectAssets.Scripts.Health
 
         private void Awake()
         {
-            _healthController.HealthUpdated += UpdateHealthBar;
+            _healthController.OnHealthChanged += UpdateHealthBar;
         }
-
-        private void UpdateHealthBar(float healthPercentage)
-        {
-            _healthBarImage.fillAmount = healthPercentage;
-        }
-
+        
         private void OnDestroy()
         {
-            _healthController.HealthUpdated -= UpdateHealthBar;
+            _healthController.OnHealthChanged -= UpdateHealthBar;
         }
+
+        private void UpdateHealthBar()
+        {
+            _healthBarImage.fillAmount = _healthController.CurrentHealth / _healthController.MaxHealth;
+        }
+
+        
     }
 }

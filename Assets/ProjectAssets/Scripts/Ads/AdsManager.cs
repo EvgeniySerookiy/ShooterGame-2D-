@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
+using Zenject;
 
 namespace ProjectAssets.Scripts.Ads
 {
-    public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
+    public class AdsManager : IUnityAdsInitializationListener, IInitializable
     {
         private const string GAME_ID = "5706870";
-        
-        private bool _adsEnabled = true;
 
-        [SerializeField] private bool _testMod = true;
+        private bool _testMode = true;
 
-        private void Awake()
+        public void Initialize()
         {
-            Advertisement.Initialize(GAME_ID, _testMod, this);
+            Advertisement.Initialize(GAME_ID, _testMode, this);
         }
 
         public void OnInitializationComplete()

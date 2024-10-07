@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using ProjectAssets.Scripts.Ads;
 using ProjectAssets.Scripts.Buffs;
 using ProjectAssets.Scripts.Buffs.Settings;
 using ProjectAssets.Scripts.Bullets;
 using ProjectAssets.Scripts.Enemy;
 using ProjectAssets.Scripts.Enemy.Settings;
 using ProjectAssets.Scripts.GoogleImporter;
+using ProjectAssets.Scripts.Iap;
 using ProjectAssets.Scripts.PlayerCharacter;
 using ProjectAssets.Scripts.Weapon;
 using ProjectAssets.Scripts.Weapon.Settings;
@@ -42,6 +44,11 @@ namespace ProjectAssets.Scripts.ZenjectInstallers
             Container.Bind<CoroutineLauncher>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle();
             
+            Container.BindInterfacesAndSelfTo<Purchasers>().AsSingle();
+            
+            Container.BindInterfacesTo<AdsManager>().AsSingle();
+            Container.BindInterfacesTo<InterstitialAds>().AsSingle();
+            Container.BindInterfacesTo<RewardedAds>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerWeaponController>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameInput>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerMoveController>().AsSingle();

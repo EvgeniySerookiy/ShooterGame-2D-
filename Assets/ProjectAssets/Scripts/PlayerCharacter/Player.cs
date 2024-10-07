@@ -44,7 +44,7 @@ namespace ProjectAssets.Scripts.PlayerCharacter
             
             _cameraController.ShakeCamera();
             
-            if (HealthController.Health <= 0)
+            if (HealthController.CurrentHealth <= 0)
             {
                 Dying();
             }

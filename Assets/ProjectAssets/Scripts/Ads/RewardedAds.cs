@@ -4,17 +4,13 @@ using UnityEngine.Advertisements;
 
 namespace ProjectAssets.Scripts.Ads
 {
-    public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+    public class RewardedAds : IUnityAdsLoadListener, IUnityAdsShowListener, IRewardedAds
     {
-        private bool _adsEnabled = true;
         private const string REWARDED_VIDEO = "Rewarded_Android";
         
         public event Action OnAdCompleted;
-
-        public void DisableAds()
-        {
-            _adsEnabled = false;
-        }
+        
+        private bool _adsEnabled = true;
         
         public void Load()
         {
@@ -27,6 +23,11 @@ namespace ProjectAssets.Scripts.Ads
             {
                 Advertisement.Show(REWARDED_VIDEO, this);
             }
+        }
+        
+        public void DisableAds()
+        {
+            _adsEnabled = false;
         }
 
         public void OnUnityAdsAdLoaded(string placementId)

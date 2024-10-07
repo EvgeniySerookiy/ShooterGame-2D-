@@ -74,7 +74,7 @@ namespace ProjectAssets.Scripts.Enemy
         
         private void HandleDamageTaken()
         {
-            if (_healthController.Health <= 0)
+            if (_healthController.CurrentHealth <= 0)
             {
                 Die();
             }

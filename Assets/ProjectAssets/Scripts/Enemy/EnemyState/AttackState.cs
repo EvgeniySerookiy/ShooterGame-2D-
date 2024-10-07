@@ -77,7 +77,7 @@ namespace ProjectAssets.Scripts.Enemy.EnemyState
                 return;
             }
             
-            if (_healthController.Health == 0)
+            if (_healthController.CurrentHealth == 0)
             {
                 _stateMachine.Transit<DeathState>();
                 return;

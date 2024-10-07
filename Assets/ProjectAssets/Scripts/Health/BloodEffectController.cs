@@ -18,18 +18,18 @@ namespace ProjectAssets.Scripts.Health
         
         private void Start()
         {
-            _healthController.OnBloodEffect += ShowBloodEffect;
+            _healthController.OnHealthChanged += ShowBloodEffect;
+        }
+        
+        private void OnDestroy()
+        {
+            _healthController.OnHealthChanged -= ShowBloodEffect;
         }
 
         private void ShowBloodEffect()
         {
             var bloodEffectObject = Instantiate(_bloodEffectPrefab, transform.position, Quaternion.identity);
             Destroy(bloodEffectObject.gameObject, _bloodEffectLifetime);
-        }
-
-        private void OnDestroy()
-        {
-            _healthController.OnBloodEffect -= ShowBloodEffect;
         }
     }
 }
