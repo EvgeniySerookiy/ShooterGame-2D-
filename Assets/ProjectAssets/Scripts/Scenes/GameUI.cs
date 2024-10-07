@@ -141,6 +141,7 @@ namespace ProjectAssets.Scripts.Scenes
 
         private void OnDestroy()
         {
+            _buttonRemoveAds.onClick.AddListener(() => _purchasers.CompletePurchase());
             _buttonPause.onClick.RemoveListener(PauseGame);
             _buttonPlay.onClick.RemoveListener(PlayGame);
             _buttonContinue.onClick.RemoveListener(ShowRewardedAd);
