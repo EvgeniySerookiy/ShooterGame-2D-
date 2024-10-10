@@ -60,7 +60,6 @@ namespace ProjectAssets.Scripts.ZenjectInstallers
             
             Container.Bind<MonoBehaviour>().FromInstance(this).AsSingle();
             Container.Bind<Bullet>().FromInstance(_bulletPrefab).AsSingle();
-            
         }
     }
 }
